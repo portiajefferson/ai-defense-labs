@@ -22,7 +22,7 @@ Note: plain `python`/`python3` are Windows Store stub aliases on this machine an
 
 **Fields extracted:** EventID, UtcTime, Image, CommandLine, User, IntegrityLevel, ParentImage, ParentCommandLine, Computer, Hashes.
 
-Sample data for manual testing lives in `module-02-security-tool/sysmon-parser/samples/` (`event1.xml`–`event3.xml`, plus `multi_events.xml` combining all three under an `<Events>` root).
+Sample data for manual testing lives in `module-02-security-tool/sysmon-parser/samples/` (`event1.xml`–`event3.xml`, plus `multi_events.xml` — 30 synthetic events across 14 images, 6 users, and mixed integrity levels — for exercising flags at a larger scale).
 
 ### Architectural decisions
 
@@ -36,4 +36,4 @@ Sample data for manual testing lives in `module-02-security-tool/sysmon-parser/s
 - **`--format` controls output shape**: `json` (default, single object or array depending on match count), `jsonl` (one compact JSON object per line, always — for streaming/piping), or `csv` (header row + one row per record). The CSV writer uses `lineterminator="\n"` and file writes use `open(..., newline="")` to avoid double-translated `\r\r\n` line endings on Windows.
 - **`--stats` outputs summary statistics instead of events** (total events, unique images/users with counts, events by IntegrityLevel), for quick triage before deep analysis. Always JSON regardless of `--format`; still respects the filter flags; and skips the "no matching records" exit so a zero-match filter combo still returns valid zeroed stats.
 
-See `README.md` in this directory for full usage examples and `HANDOFF.md` for outstanding work.
+See the module README (`../README.md`) for full usage examples and `HANDOFF.md` in this directory for outstanding work.
