@@ -33,5 +33,6 @@ Sample data for manual testing lives in `module-02-security-tool/sysmon-parser/s
 - **Filtering happens after extraction**, not during XML traversal — `matches_filters()` is a pure function operating on the already-normalized record dicts (not on `argparse.Namespace` or raw XML), keeping `parse_file`/`parse_event` filter-agnostic and easy to reuse.
 - **Filter flags:** `--image` (substring), `--user` (exact), `--command-line` (substring) — all case-insensitive, since Windows paths and `domain\user` values are case-insensitive by convention. `--integrity-level` is exact-match and validated via argparse `choices` against `Low`/`Medium`/`High`/`System`, so a typo fails fast with a CLI error instead of silently returning zero results.
 - **Multiple filters combine with AND logic** — a record must satisfy every supplied filter to be included.
+- **`--format` controls output shape**: `json` (default, single object or array depending on match count), `jsonl` (one compact JSON object per line, always — for streaming/piping), or `csv` (header row + one row per record). The CSV writer uses `lineterminator="\n"` and file writes use `open(..., newline="")` to avoid double-translated `\r\r\n` line endings on Windows.
 
 See `README.md` in this directory for full usage examples and `HANDOFF.md` for outstanding work.

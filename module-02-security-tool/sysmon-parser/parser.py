@@ -2,6 +2,8 @@
 """Parse Sysmon Event ID 1 (Process Creation) XML into JSON."""
 
 import argparse
+import csv
+import io
 import json
 import sys
 import xml.etree.ElementTree as ET
@@ -45,6 +47,21 @@ def matches_filters(record, image, user, command_line, integrity_level):
     return True
 
 
+def format_records(records, fmt):
+    if fmt == "jsonl":
+        return "\n".join(json.dumps(r) for r in records) + "\n"
+
+    if fmt == "csv":
+        buf = io.StringIO()
+        writer = csv.DictWriter(buf, fieldnames=list(records[0].keys()), lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(records)
+        return buf.getvalue()
+
+    result = records[0] if len(records) == 1 else records
+    return json.dumps(result, indent=2) + "\n"
+
+
 def parse_file(path):
     root = ET.parse(path).getroot()
     events = root.findall("ns:Event", NS) if root.tag.endswith("Events") else [root]
@@ -75,6 +92,12 @@ def main():
         choices=["Low", "Medium", "High", "System"],
         help="Only include events with this exact IntegrityLevel",
     )
+    parser.add_argument(
+        "--format",
+        choices=["json", "jsonl", "csv"],
+        default="json",
+        help="Output format: json (default, array of events), jsonl (one JSON object per line), or csv (with headers)",
+    )
     args = parser.parse_args()
 
     try:
@@ -94,14 +117,13 @@ def main():
         print("No matching records found.", file=sys.stderr)
         sys.exit(1)
 
-    result = records[0] if len(records) == 1 else records
-    output = json.dumps(result, indent=2)
+    output = format_records(records, args.format)
 
     if args.output:
-        with open(args.output, "w", encoding="utf-8") as f:
-            f.write(output + "\n")
+        with open(args.output, "w", encoding="utf-8", newline="") as f:
+            f.write(output)
     else:
-        print(output)
+        sys.stdout.write(output)
 
 
 if __name__ == "__main__":

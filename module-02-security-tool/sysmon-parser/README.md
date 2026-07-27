@@ -4,7 +4,7 @@ Extracts key fields from Sysmon Event ID 1 (Process Creation) XML and outputs JS
 
 **Fields extracted:** `EventID`, `UtcTime`, `Image`, `CommandLine`, `User`, `IntegrityLevel`, `ParentImage`, `ParentCommandLine`, `Computer`, `Hashes`
 
-Accepts either a single `<Event>` document or a batched `<Events>` document containing multiple events. Output is a single JSON object for one matching event, or a JSON array for multiple.
+Accepts either a single `<Event>` document or a batched `<Events>` document containing multiple events. Supports JSON, JSON Lines, and CSV output via `--format`.
 
 ## Requirements
 
@@ -55,6 +55,25 @@ python3.14 parser.py samples/multi_events.xml --integrity-level high
 
 # Combine filters (AND)
 python3.14 parser.py samples/multi_events.xml --image powershell --user "corp\jdoe"
+```
+
+### Output format
+
+Controlled with `--format`:
+
+| Format | Description |
+|---|---|
+| `json` (default) | A single JSON object for one matching event, or a JSON array for multiple |
+| `jsonl` | One compact JSON object per line — good for streaming/piping to other tools |
+| `csv` | CSV with a header row |
+
+```
+python3.14 parser.py samples/multi_events.xml --format json
+python3.14 parser.py samples/multi_events.xml --format jsonl
+python3.14 parser.py samples/multi_events.xml --format csv
+
+# combine with filters and -o like any other run
+python3.14 parser.py samples/multi_events.xml --format csv -o events.csv
 ```
 
 ## Sample data

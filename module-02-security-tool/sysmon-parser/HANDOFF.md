@@ -6,7 +6,7 @@ A Python CLI tool (`module-02-security-tool/sysmon-parser/parser.py`) that parse
 
 `EventID`, `UtcTime`, `Image`, `CommandLine`, `User`, `IntegrityLevel`, `ParentImage`, `ParentCommandLine`, `Computer`, `Hashes`
 
-It accepts either a single `<Event>` document or a batched `<Events>` document containing multiple events, and outputs a single JSON object (one event) or a JSON array (multiple events).
+It accepts either a single `<Event>` document or a batched `<Events>` document containing multiple events.
 
 It also supports filtering results at parse time:
 - `--image` — substring match on `Image`, case-insensitive
@@ -15,6 +15,11 @@ It also supports filtering results at parse time:
 - `--integrity-level` — exact match, restricted to `Low`/`Medium`/`High`/`System`
 
 Multiple filters combine with AND logic.
+
+And a choice of output format via `--format`:
+- `json` (default) — a single JSON object for one matching event, a JSON array for multiple
+- `jsonl` — one compact JSON object per line, always, regardless of match count (streaming/piping)
+- `csv` — CSV with a header row
 
 Sample data lives in `module-02-security-tool/sysmon-parser/samples/`:
 - `event1.xml` — `whoami.exe` execution (benign)
@@ -32,6 +37,8 @@ python3.14 parser.py samples/multi_events.xml
 python3.14 parser.py samples/multi_events.xml --image powershell --user "corp\jdoe"
 python3.14 parser.py samples/multi_events.xml --command-line=-enc
 python3.14 parser.py samples/multi_events.xml -o events.json
+python3.14 parser.py samples/multi_events.xml --format jsonl
+python3.14 parser.py samples/multi_events.xml --format csv -o events.csv
 ```
 
 Note: on this machine, plain `python`/`python3` are Windows Store stub aliases that fail — use `python3.14`.
@@ -42,7 +49,8 @@ Note: on this machine, plain `python`/`python3` are Windows Store stub aliases t
 - **`--integrity-level` is validated via argparse `choices`** against the four real Sysmon integrity levels rather than accepting any string. A typo (e.g. `Hihg`) fails fast with a CLI error instead of silently returning zero results.
 - **Filters combine with AND logic**, applied after extraction on the normalized record dicts (not baked into the XML parsing). This keeps `parse_file`/`parse_event` unchanged and works uniformly for single-event and batched files.
 - **Only Event ID 1 records are extracted**, even from a batched file that could in principle contain other event IDs — the tool is scoped specifically to Process Creation events per the original goal.
-- **JSON output shape depends on match count**: a single object for one match, an array for multiple. This mirrors the "one object per event, or array for multiple" requirement from the original spec.
+- **JSON output shape depends on match count**: a single object for one match, an array for multiple. This mirrors the "one object per event, or array for multiple" requirement from the original spec. `jsonl` and `csv` don't get this treatment — they're inherently per-record streaming formats, so they always emit one line/row per record regardless of count.
+- **CSV writer uses `lineterminator="\n"`**, and all `-o` file writes use `open(..., newline="")`. Without this, Python's csv module emits `\r\n` row terminators, and a text-mode file write on Windows would then re-translate the `\n` half of that into `\r\n` again, producing broken `\r\r\n` line endings.
 
 ## What's left to do
 
