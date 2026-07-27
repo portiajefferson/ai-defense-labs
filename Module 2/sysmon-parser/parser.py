@@ -77,7 +77,15 @@ def main():
     )
     args = parser.parse_args()
 
-    records = parse_file(args.input)
+    try:
+        records = parse_file(args.input)
+    except ET.ParseError as e:
+        print(f"Error: malformed XML in '{args.input}': {e}", file=sys.stderr)
+        sys.exit(1)
+    except OSError as e:
+        print(f"Error: could not read '{args.input}': {e.strerror}", file=sys.stderr)
+        sys.exit(1)
+
     records = [
         r for r in records
         if matches_filters(r, args.image, args.user, args.command_line, args.integrity_level)

@@ -4,25 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-- `hello.txt` — a placeholder file
-- `module2/sysmon-parser/` — a Python CLI tool for parsing Sysmon Event ID 1 (Process Creation) XML, described below
+- `Module 1/hello.txt` — a placeholder file
+- `Module 2/sysmon-parser/` — a Python CLI tool for parsing Sysmon Event ID 1 (Process Creation) XML, described below
 
 There are no lint or test commands defined yet.
 
-## Sysmon XML parser (`module2/sysmon-parser/parser.py`)
+## Sysmon XML parser (`Module 2/sysmon-parser/parser.py`)
 
 Parses Sysmon Event ID 1 (Process Creation) events from XML and extracts key fields to JSON.
 
 **Run it:**
 ```
-cd module2/sysmon-parser
+cd "Module 2/sysmon-parser"
 python3.14 parser.py samples/multi_events.xml
 ```
 Note: plain `python`/`python3` are Windows Store stub aliases on this machine and fail — use `python3.14`.
 
 **Fields extracted:** EventID, UtcTime, Image, CommandLine, User, IntegrityLevel, ParentImage, ParentCommandLine, Computer, Hashes.
 
-Sample data for manual testing lives in `module2/sysmon-parser/samples/` (`event1.xml`–`event3.xml`, plus `multi_events.xml` combining all three under an `<Events>` root).
+Sample data for manual testing lives in `Module 2/sysmon-parser/samples/` (`event1.xml`–`event3.xml`, plus `multi_events.xml` combining all three under an `<Events>` root).
 
 ### Architectural decisions
 
@@ -34,4 +34,4 @@ Sample data for manual testing lives in `module2/sysmon-parser/samples/` (`event
 - **Filter flags:** `--image` (substring), `--user` (exact), `--command-line` (substring) — all case-insensitive, since Windows paths and `domain\user` values are case-insensitive by convention. `--integrity-level` is exact-match and validated via argparse `choices` against `Low`/`Medium`/`High`/`System`, so a typo fails fast with a CLI error instead of silently returning zero results.
 - **Multiple filters combine with AND logic** — a record must satisfy every supplied filter to be included.
 
-See `module2/sysmon-parser/README.md` for full usage examples and `HANDOFF.md` for outstanding work.
+See `README.md` in this directory for full usage examples and `HANDOFF.md` for outstanding work.
