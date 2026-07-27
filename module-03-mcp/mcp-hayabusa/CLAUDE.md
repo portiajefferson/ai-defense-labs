@@ -42,9 +42,9 @@ Note: on this machine, plain `python`/`python3` are Windows Store stub aliases t
 
 ## MCP registration
 
-`.mcp.json` registers the server (command `python`, args `["server.py"]`, run from this directory); `.claude/settings.json` sets `enableAllProjectMcpServers: true` so it's auto-approved without a trust prompt when Claude Code is opened from this folder.
+`.mcp.json` registers the server (command `.venv/Scripts/python.exe`, args `["server.py"]`, run from this directory); `.claude/settings.json` sets `enableAllProjectMcpServers: true` so it's auto-approved without a trust prompt when Claude Code is opened from this folder.
 
-**Caveat:** on this machine, plain `python` is a Windows Store stub alias that fails (see Setup above) — only `python3.14` works, and `mcp` is only installed into the project-local `.venv`, not any `python`/`python3.14` on PATH. As registered, launching via `.mcp.json` will fail here. To actually work in this environment, `command` would need to be updated to the venv interpreter (e.g. `.venv/Scripts/python.exe` on Windows) or `python3.14` with `mcp` installed globally/on PATH. Left as `python` per explicit instruction; revisit if the registered server needs to actually launch successfully here.
+Points at the venv interpreter rather than plain `python`/`python3.14` because `mcp` is only installed into the project-local `.venv` (see Setup above) — plain `python` is a broken Windows Store stub alias on this machine, and even `python3.14` on PATH doesn't have `mcp` installed globally. If this is ported to Linux/Mac, `command` needs to change to `.venv/bin/python`.
 
 ## Testing
 
