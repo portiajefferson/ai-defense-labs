@@ -2,7 +2,7 @@
 
 ## What we built
 
-A Python CLI tool (`Module 2/sysmon-parser/parser.py`) that parses Sysmon Event ID 1 (Process Creation) XML and extracts key fields to JSON:
+A Python CLI tool (`module-02-security-tool/sysmon-parser/parser.py`) that parses Sysmon Event ID 1 (Process Creation) XML and extracts key fields to JSON:
 
 `EventID`, `UtcTime`, `Image`, `CommandLine`, `User`, `IntegrityLevel`, `ParentImage`, `ParentCommandLine`, `Computer`, `Hashes`
 
@@ -16,7 +16,7 @@ It also supports filtering results at parse time:
 
 Multiple filters combine with AND logic.
 
-Sample data lives in `Module 2/sysmon-parser/samples/`:
+Sample data lives in `module-02-security-tool/sysmon-parser/samples/`:
 - `event1.xml` — `whoami.exe` execution (benign)
 - `event2.xml` — `cmd.exe` spawning `powershell.exe`
 - `event3.xml` — Office doc (`WINWORD.EXE`) spawning `powershell.exe` with a base64-encoded (`-enc`) command — simulates a phishing/macro execution chain
@@ -27,7 +27,7 @@ Full usage examples are in `README.md` in this directory.
 ## How to use it
 
 ```
-cd "Module 2/sysmon-parser"
+cd module-02-security-tool/sysmon-parser
 python3.14 parser.py samples/multi_events.xml
 python3.14 parser.py samples/multi_events.xml --image powershell --user "corp\jdoe"
 python3.14 parser.py samples/multi_events.xml --command-line=-enc
@@ -52,5 +52,7 @@ Note: on this machine, plain `python`/`python3` are Windows Store stub aliases t
 ## Repo layout note
 
 The repo root is `ai-defense-labs/`, organized by module:
-- `Module 1/hello.txt` — placeholder
-- `Module 2/sysmon-parser/` — this tool (was previously nested under `module2/sysmon-parser/`; renamed/flattened for consistency with the module-numbered layout)
+- `module-01-claude-ecosystem/hello.txt` — placeholder
+- `module-02-security-tool/sysmon-parser/` — this tool
+- `module-03-mcp/` through `module-12-cross-siem-investigation/` — placeholder folders (`.gitkeep`) for upcoming modules
+- `notes/`, `project/` — placeholder folders (`.gitkeep`) for course notes and the capstone project

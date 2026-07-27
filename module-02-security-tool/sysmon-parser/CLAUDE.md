@@ -4,25 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-- `Module 1/hello.txt` — a placeholder file
-- `Module 2/sysmon-parser/` — a Python CLI tool for parsing Sysmon Event ID 1 (Process Creation) XML, described below
+- `module-01-claude-ecosystem/hello.txt` — a placeholder file
+- `module-02-security-tool/sysmon-parser/` — a Python CLI tool for parsing Sysmon Event ID 1 (Process Creation) XML, described below
 
 There are no lint or test commands defined yet.
 
-## Sysmon XML parser (`Module 2/sysmon-parser/parser.py`)
+## Sysmon XML parser (`module-02-security-tool/sysmon-parser/parser.py`)
 
 Parses Sysmon Event ID 1 (Process Creation) events from XML and extracts key fields to JSON.
 
 **Run it:**
 ```
-cd "Module 2/sysmon-parser"
+cd module-02-security-tool/sysmon-parser
 python3.14 parser.py samples/multi_events.xml
 ```
 Note: plain `python`/`python3` are Windows Store stub aliases on this machine and fail — use `python3.14`.
 
 **Fields extracted:** EventID, UtcTime, Image, CommandLine, User, IntegrityLevel, ParentImage, ParentCommandLine, Computer, Hashes.
 
-Sample data for manual testing lives in `Module 2/sysmon-parser/samples/` (`event1.xml`–`event3.xml`, plus `multi_events.xml` combining all three under an `<Events>` root).
+Sample data for manual testing lives in `module-02-security-tool/sysmon-parser/samples/` (`event1.xml`–`event3.xml`, plus `multi_events.xml` combining all three under an `<Events>` root).
 
 ### Architectural decisions
 
