@@ -1,0 +1,43 @@
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+    <EventID>1</EventID>
+    <Version>5</Version>
+    <Level>4</Level>
+    <Task>1</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8000000000000000</Keywords>
+    <TimeCreated SystemTime="2026-07-26T14:32:07.1234567Z"/>
+    <EventRecordID>184512</EventRecordID>
+    <Correlation/>
+    <Execution ProcessID="3456" ThreadID="3980"/>
+    <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+    <Computer>WORKSTATION07.corp.local</Computer>
+    <Security UserID="S-1-5-18"/>
+  </System>
+  <EventData>
+    <Data Name="RuleName">-</Data>
+    <Data Name="UtcTime">2026-07-26 14:32:07.123</Data>
+    <Data Name="ProcessGuid">{4f3a2b1c-6e9d-6889-1a00-000000001f00}</Data>
+    <Data Name="ProcessId">6784</Data>
+    <Data Name="Image">C:\Windows\System32\whoami.exe</Data>
+    <Data Name="FileVersion">10.0.19041.1 (WinBuild.160101.0800)</Data>
+    <Data Name="Description">Displays user, group and privileges information</Data>
+    <Data Name="Product">Microsoft® Windows® Operating System</Data>
+    <Data Name="Company">Microsoft Corporation</Data>
+    <Data Name="OriginalFileName">whoami.exe</Data>
+    <Data Name="CommandLine">whoami.exe /all</Data>
+    <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
+    <Data Name="User">CORP\jdoe</Data>
+    <Data Name="LogonGuid">{4f3a2b1c-6cf1-6889-1a00-0000000e1c00}</Data>
+    <Data Name="LogonId">0x1c0e00</Data>
+    <Data Name="TerminalSessionId">1</Data>
+    <Data Name="IntegrityLevel">Medium</Data>
+    <Data Name="Hashes">MD5=8350AC0FB48819CA79C8F0DD8C702166,SHA256=2E4A1051D9D9FB8AD09B4A9E19B75F8C6F7F2D4A18F9A8C21C6F6E4EC1D3B2A7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744</Data>
+    <Data Name="ParentProcessGuid">{4f3a2b1c-6cf5-6889-0e00-000000001f00}</Data>
+    <Data Name="ParentProcessId">4512</Data>
+    <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+    <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+    <Data Name="ParentUser">CORP\jdoe</Data>
+  </EventData>
+</Event>

@@ -1,0 +1,43 @@
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}"/>
+    <EventID>1</EventID>
+    <Version>5</Version>
+    <Level>4</Level>
+    <Task>1</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8000000000000000</Keywords>
+    <TimeCreated SystemTime="2026-07-26T14:35:41.9871234Z"/>
+    <EventRecordID>184519</EventRecordID>
+    <Correlation/>
+    <Execution ProcessID="3456" ThreadID="3980"/>
+    <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+    <Computer>WORKSTATION07.corp.local</Computer>
+    <Security UserID="S-1-5-18"/>
+  </System>
+  <EventData>
+    <Data Name="RuleName">technique_id=T1059.001,technique_name=PowerShell</Data>
+    <Data Name="UtcTime">2026-07-26 14:35:41.987</Data>
+    <Data Name="ProcessGuid">{4f3a2b1c-6ee5-6889-1e00-000000001f00}</Data>
+    <Data Name="ProcessId">7920</Data>
+    <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+    <Data Name="FileVersion">10.0.19041.3208 (WinBuild.160101.0800)</Data>
+    <Data Name="Description">Windows PowerShell</Data>
+    <Data Name="Product">Microsoft® Windows® Operating System</Data>
+    <Data Name="Company">Microsoft Corporation</Data>
+    <Data Name="OriginalFileName">PowerShell.EXE</Data>
+    <Data Name="CommandLine">powershell.exe -NoProfile -ExecutionPolicy Bypass</Data>
+    <Data Name="CurrentDirectory">C:\Users\jdoe\</Data>
+    <Data Name="User">CORP\jdoe</Data>
+    <Data Name="LogonGuid">{4f3a2b1c-6cf1-6889-1a00-0000000e1c00}</Data>
+    <Data Name="LogonId">0x1c0e00</Data>
+    <Data Name="TerminalSessionId">1</Data>
+    <Data Name="IntegrityLevel">Medium</Data>
+    <Data Name="Hashes">MD5=04029E121A0CFA5991749937DD22A1D9,SHA256=A907E9B5AD9E9D5F1D2C4E9A73B6C1D8F2E4A6B8C0D2E4F6A8B0C2D4E6F8A0B1,IMPHASH=1A6B2C3D4E5F60718293A4B5C6D7E8F9</Data>
+    <Data Name="ParentProcessGuid">{4f3a2b1c-6cf5-6889-0e00-000000001f00}</Data>
+    <Data Name="ParentProcessId">4512</Data>
+    <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+    <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+    <Data Name="ParentUser">CORP\jdoe</Data>
+  </EventData>
+</Event>
