@@ -33,6 +33,18 @@ def parse_event(event_elem):
     }
 
 
+def matches_filters(record, image, user, command_line, integrity_level):
+    if image and image.lower() not in (record["Image"] or "").lower():
+        return False
+    if user and user.lower() != (record["User"] or "").lower():
+        return False
+    if command_line and command_line.lower() not in (record["CommandLine"] or "").lower():
+        return False
+    if integrity_level and integrity_level != record["IntegrityLevel"]:
+        return False
+    return True
+
+
 def parse_file(path):
     root = ET.parse(path).getroot()
     events = root.findall("ns:Event", NS) if root.tag.endswith("Events") else [root]
@@ -51,11 +63,27 @@ def main():
     )
     parser.add_argument("input", help="Path to a Sysmon XML file (single <Event> or <Events> batch)")
     parser.add_argument("-o", "--output", help="Write JSON to this file instead of stdout")
+    parser.add_argument("--image", help="Only include events whose Image contains this substring (case-insensitive)")
+    parser.add_argument("--user", help="Only include events with this exact User (case-insensitive)")
+    parser.add_argument(
+        "--command-line",
+        help="Only include events whose CommandLine contains this substring (case-insensitive)",
+    )
+    parser.add_argument(
+        "--integrity-level",
+        type=str.title,
+        choices=["Low", "Medium", "High", "System"],
+        help="Only include events with this exact IntegrityLevel",
+    )
     args = parser.parse_args()
 
     records = parse_file(args.input)
+    records = [
+        r for r in records
+        if matches_filters(r, args.image, args.user, args.command_line, args.integrity_level)
+    ]
     if not records:
-        print("No Event ID 1 records found.", file=sys.stderr)
+        print("No matching records found.", file=sys.stderr)
         sys.exit(1)
 
     result = records[0] if len(records) == 1 else records

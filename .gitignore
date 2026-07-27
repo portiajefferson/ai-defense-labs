@@ -1,0 +1,28 @@
+# Environment / secrets
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Claude/local settings
+.claude/settings.local.json
+
+# VS Code
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs / temp
+*.log
+tmp/
+temp/
