@@ -49,6 +49,16 @@ Registered in two places, for two different purposes:
 
 In short: `.claude/settings.json` satisfies the assignment's literal spec; `.mcp.json` is what makes the server actually launch in this environment. If ported to Linux/Mac, `.mcp.json`'s `command` needs to change to `.venv/bin/python`.
 
+## Sample data
+
+`samples/` holds real EVTX files for manual testing (no README of its own — kept here to avoid an extra file per directory).
+
+- **`UACME_59_Sysmon.evtx`** (68 KB) — Sysmon-instrumented capture of a UAC bypass via [UACME](https://github.com/hfiref0x/UACME) method 59, from [EVTX-ATTACK-SAMPLES](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES) (downloaded from `raw.githubusercontent.com/sbousseaden/EVTX-ATTACK-SAMPLES/master/UACME_59_Sysmon.evtx`). Contains real Sysmon Event ID 10 (ProcessAccess) records.
+  - Scanned with default `scan_evtx()`: 8 detections, all `Level: "low"`, `RuleTitle: "Proc Access"`, `EventID: 10`.
+  - Scanned with `min_severity="high"`: 0 detections (correctly excludes the low-severity hits — confirms the `-m` filter actually narrows results).
+
+Add new samples here with the same pattern: filename, size, source, what technique/event types it contains, and the actual `scan_evtx()` output it produces, so this doubles as a regression reference.
+
 ## Testing
 
-`test_server.py` is a manual smoke test (no framework, no pytest) that imports `server` and calls `scan_evtx()` directly against a real sample — `samples/UACME_59_Sysmon.evtx`, a UAC bypass (UACME method 59) captured via Sysmon, from [EVTX-ATTACK-SAMPLES](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES). Run it with `.venv/Scripts/python.exe test_server.py`. It checks the default scan (currently finds 8 low-severity "Proc Access" detections), a `min_severity="high"` scan (0 results — confirms filtering actually narrows), and the missing-file error path.
+`test_server.py` is a manual smoke test (no framework, no pytest) that imports `server` and calls `scan_evtx()` directly against `samples/UACME_59_Sysmon.evtx` (see Sample data above). Run it with `.venv/Scripts/python.exe test_server.py`. It checks the default scan, a `min_severity="high"` scan, and the missing-file error path — see Sample data for the expected result counts.
