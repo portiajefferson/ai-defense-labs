@@ -76,6 +76,20 @@ python3.14 parser.py samples/multi_events.xml --format csv
 python3.14 parser.py samples/multi_events.xml --format csv -o events.csv
 ```
 
+### Stats mode
+
+`--stats` outputs summary statistics instead of individual events — useful for quick triage of what's in a file before diving into deep analysis. Always JSON, regardless of `--format`. Respects filters (`--image`, `--user`, `--command-line`, `--integrity-level`), so you can scope the stats to a subset first.
+
+```
+python3.14 parser.py samples/multi_events.xml --stats
+```
+
+Outputs:
+- `total_events` — count of matching events
+- `unique_images` — count + sorted list of distinct `Image` values
+- `unique_users` — count + sorted list of distinct `User` values
+- `events_by_integrity_level` — event count per `IntegrityLevel`
+
 ## Sample data
 
 `samples/` contains example Sysmon Event ID 1 XML for testing:

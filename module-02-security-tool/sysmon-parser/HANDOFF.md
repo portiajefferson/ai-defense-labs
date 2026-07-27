@@ -21,6 +21,8 @@ And a choice of output format via `--format`:
 - `jsonl` — one compact JSON object per line, always, regardless of match count (streaming/piping)
 - `csv` — CSV with a header row
 
+Plus a `--stats` mode that outputs summary statistics instead of events (total events, unique images/users with counts, events by IntegrityLevel) — always JSON, and still respects the filter flags.
+
 Sample data lives in `module-02-security-tool/sysmon-parser/samples/`:
 - `event1.xml` — `whoami.exe` execution (benign)
 - `event2.xml` — `cmd.exe` spawning `powershell.exe`
@@ -51,6 +53,7 @@ Note: on this machine, plain `python`/`python3` are Windows Store stub aliases t
 - **Only Event ID 1 records are extracted**, even from a batched file that could in principle contain other event IDs — the tool is scoped specifically to Process Creation events per the original goal.
 - **JSON output shape depends on match count**: a single object for one match, an array for multiple. This mirrors the "one object per event, or array for multiple" requirement from the original spec. `jsonl` and `csv` don't get this treatment — they're inherently per-record streaming formats, so they always emit one line/row per record regardless of count.
 - **CSV writer uses `lineterminator="\n"`**, and all `-o` file writes use `open(..., newline="")`. Without this, Python's csv module emits `\r\n` row terminators, and a text-mode file write on Windows would then re-translate the `\n` half of that into `\r\n` again, producing broken `\r\r\n` line endings.
+- **`--stats` runs after filtering but skips the "no matching records" exit**, so a filter combo that matches nothing still returns valid (zeroed) stats rather than erroring — useful during triage to confirm "yes, this filter really matches zero events" rather than getting an unhelpful CLI error.
 
 ## What's left to do
 

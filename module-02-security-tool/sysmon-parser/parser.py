@@ -7,6 +7,7 @@ import io
 import json
 import sys
 import xml.etree.ElementTree as ET
+from collections import Counter
 
 NS = {"ns": "http://schemas.microsoft.com/win/2004/08/events/event"}
 
@@ -62,6 +63,20 @@ def format_records(records, fmt):
     return json.dumps(result, indent=2) + "\n"
 
 
+# This stats feature is for quick triage to understand what's in a file before deep analysis
+def compute_stats(records):
+    images = sorted({r["Image"] for r in records if r["Image"]})
+    users = sorted({r["User"] for r in records if r["User"]})
+    integrity_counts = Counter(r["IntegrityLevel"] for r in records if r["IntegrityLevel"])
+
+    return {
+        "total_events": len(records),
+        "unique_images": {"count": len(images), "values": images},
+        "unique_users": {"count": len(users), "values": users},
+        "events_by_integrity_level": dict(sorted(integrity_counts.items())),
+    }
+
+
 def parse_file(path):
     root = ET.parse(path).getroot()
     events = root.findall("ns:Event", NS) if root.tag.endswith("Events") else [root]
@@ -98,6 +113,11 @@ def main():
         default="json",
         help="Output format: json (default, array of events), jsonl (one JSON object per line), or csv (with headers)",
     )
+    parser.add_argument(
+        "--stats",
+        action="store_true",
+        help="Output summary statistics (total events, unique images/users, counts by IntegrityLevel) instead of individual events",
+    )
     args = parser.parse_args()
 
     try:
@@ -113,11 +133,14 @@ def main():
         r for r in records
         if matches_filters(r, args.image, args.user, args.command_line, args.integrity_level)
     ]
-    if not records:
-        print("No matching records found.", file=sys.stderr)
-        sys.exit(1)
 
-    output = format_records(records, args.format)
+    if args.stats:
+        output = json.dumps(compute_stats(records), indent=2) + "\n"
+    else:
+        if not records:
+            print("No matching records found.", file=sys.stderr)
+            sys.exit(1)
+        output = format_records(records, args.format)
 
     if args.output:
         with open(args.output, "w", encoding="utf-8", newline="") as f:
