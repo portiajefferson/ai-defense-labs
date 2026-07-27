@@ -1,0 +1,6 @@
+# MCP Python SDK
+mcp>=1.0.0
+
+# Hayabusa itself is an external CLI binary (not a Python package) --
+# invoked as a subprocess. Its JSON/JSONL output is parsed with the
+# standard library (json), so no extra parsing dependency is needed.
