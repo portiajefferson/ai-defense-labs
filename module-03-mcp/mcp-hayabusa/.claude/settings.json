@@ -1,3 +1,9 @@
 {
-  "enableAllProjectMcpServers": true
+  "enableAllProjectMcpServers": true,
+  "mcpServers": {
+    "hayabusa": {
+      "command": "python",
+      "args": ["server.py"]
+    }
+  }
 }

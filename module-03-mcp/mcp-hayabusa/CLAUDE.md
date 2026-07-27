@@ -42,9 +42,12 @@ Note: on this machine, plain `python`/`python3` are Windows Store stub aliases t
 
 ## MCP registration
 
-`.mcp.json` registers the server (command `.venv/Scripts/python.exe`, args `["server.py"]`, run from this directory); `.claude/settings.json` sets `enableAllProjectMcpServers: true` so it's auto-approved without a trust prompt when Claude Code is opened from this folder.
+Registered in two places, for two different purposes:
 
-Points at the venv interpreter rather than plain `python`/`python3.14` because `mcp` is only installed into the project-local `.venv` (see Setup above) — plain `python` is a broken Windows Store stub alias on this machine, and even `python3.14` on PATH doesn't have `mcp` installed globally. If this is ported to Linux/Mac, `command` needs to change to `.venv/bin/python`.
+- **`.claude/settings.json`** contains an `mcpServers.hayabusa` entry with `command: "python"`, `args: ["server.py"]` — per this module's assignment spec ("MCP servers are configured in .claude/settings.json ... started with 'python server.py' from this directory"). Also sets `enableAllProjectMcpServers: true` so servers are auto-approved without a trust prompt.
+- **`.mcp.json`** also registers a `hayabusa` server, but pointed at `.venv/Scripts/python.exe` instead of plain `python` — this is the file Claude Code actually reads to launch MCP servers; `settings.json`'s real schema only has approval/toggle keys (`enableAllProjectMcpServers`, `enabledMcpjsonServers`, `disabledMcpjsonServers`), not server definitions. Plain `python` is a broken Windows Store stub alias on this machine, and `mcp` is only installed in the project-local `.venv` (see Setup above), so `.mcp.json` uses the venv interpreter to actually work here.
+
+In short: `.claude/settings.json` satisfies the assignment's literal spec; `.mcp.json` is what makes the server actually launch in this environment. If ported to Linux/Mac, `.mcp.json`'s `command` needs to change to `.venv/bin/python`.
 
 ## Testing
 
