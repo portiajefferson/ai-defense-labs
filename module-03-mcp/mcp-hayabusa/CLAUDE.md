@@ -40,6 +40,12 @@ Note: on this machine, plain `python`/`python3` are Windows Store stub aliases t
 - **`download_hayabusa.py`** queries the GitHub releases API for the latest Hayabusa release, matches the asset for the current OS/architecture (excluding the `-live-response` variant via an exact `-<suffix>.zip` suffix match, not a substring match), downloads and extracts it to `./hayabusa/`, and chmods any `hayabusa*` file executable (relevant on Linux/Mac; extracted `.exe` on Windows doesn't need it).
 - **`hayabusa/`** (downloaded binary + bundled detection rules) and `.venv/` are gitignored — neither is project source.
 
+## MCP registration
+
+`.mcp.json` registers the server (command `python`, args `["server.py"]`, run from this directory); `.claude/settings.json` sets `enableAllProjectMcpServers: true` so it's auto-approved without a trust prompt when Claude Code is opened from this folder.
+
+**Caveat:** on this machine, plain `python` is a Windows Store stub alias that fails (see Setup above) — only `python3.14` works, and `mcp` is only installed into the project-local `.venv`, not any `python`/`python3.14` on PATH. As registered, launching via `.mcp.json` will fail here. To actually work in this environment, `command` would need to be updated to the venv interpreter (e.g. `.venv/Scripts/python.exe` on Windows) or `python3.14` with `mcp` installed globally/on PATH. Left as `python` per explicit instruction; revisit if the registered server needs to actually launch successfully here.
+
 ## Testing
 
 `test_server.py` is a manual smoke test (no framework, no pytest) that imports `server` and calls `scan_evtx()` directly against a real sample — `samples/UACME_59_Sysmon.evtx`, a UAC bypass (UACME method 59) captured via Sysmon, from [EVTX-ATTACK-SAMPLES](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES). Run it with `.venv/Scripts/python.exe test_server.py`. It checks the default scan (currently finds 8 low-severity "Proc Access" detections), a `min_severity="high"` scan (0 results — confirms filtering actually narrows), and the missing-file error path.
