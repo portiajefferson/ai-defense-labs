@@ -53,6 +53,13 @@ within `hayabusa/rules/` (not mixed loose into the vendored corpus), so
 rules without scanning all ~5,000 Hayabusa rules. Exact subpath name not yet
 decided.
 
+**Confirmed:** the user gave the overall go-ahead to flatten/merge module-03 and
+module-04 ("yes Module 3 and Module 4 can be flattened") before signing off for
+the night. That's a green light on *direction*, not on the specifics below —
+the 5 detailed questions were not answered in that message and still need
+resolving before actually executing the merge (don't guess at these from the
+green-light alone):
+
 **Still open — need answers before starting the actual merge:**
 
 1. **`chainsaw/`** (the second detection engine, `scan_chainsaw` tool + native
