@@ -22,16 +22,44 @@ executing) the module-03 + module-04 merge.
   (all were empty `.gitkeep` stubs — that future work builds fresh at root
   instead of growing out of these).
 
-## In progress, NOT yet done: merging module-03 + module-04
+## Done and pushed: directory flatten (no code merge yet)
 
-The plan is to combine `module-03-mcp/mcp-hayabusa` (the Hayabusa/Chainsaw EVTX
-scanner MCP server) and `module-04-mcp-detection-kb` (the Sigma-rule/ATT&CK
-coverage MCP server) into **one consolidated MCP server** — apparently Module
-4's assignment explicitly offered the option of building its functionality
-into Module 3's server instead of a separate one, which is the road we're
-taking.
+- `module-03-mcp/mcp-hayabusa/` → `ai-defense-labs/mcp-hayabusa/` (root-level,
+  no `src/` prefix — resolves open question 5 below: root, not `src/`).
+- `module-04-mcp-detection-kb/` → `ai-defense-labs/mcp-detection-kb/` (resolves
+  the naming question: `mcp-detection-kb` is the actual name from the
+  assignment's own setup commands — `mkdir ~/mcp-detection-kb` — not a name we
+  had to invent).
+- Both `.mcp.json` and `.claude/settings.json` inside `mcp-hayabusa/` use
+  relative paths/commands (`python server.py` etc.), so no edits were needed
+  there for the move itself.
+- **Mechanical note:** `module-03-mcp/mcp-hayabusa/`'s rename via `git mv`
+  failed with "Permission denied" — this session's own shell has its working
+  directory pinned inside that exact path (the "Primary working directory"),
+  and Windows won't rename/delete a directory that's an active process's CWD.
+  Worked around it with copy (`cp -r`) into the new location + `git rm
+  --cached` + deleting the old files individually (file deletes are fine even
+  inside a locked directory; only the directory node itself is locked).
+  Leftover: two now-empty, **untracked** stray directories physically remain
+  on disk — `module-03-mcp/mcp-hayabusa/` and `module-03-mcp/` — because the
+  lock never released mid-session. They're harmless (git ignores empty dirs,
+  `git status` is clean) but won't disappear until this session's shell
+  process ends; delete them manually once you're back in a fresh terminal if
+  they're still bothering you.
+- Per explicit instruction, this was **directory flattening only** — no
+  `server.py` code was touched or merged. The merge itself is still pending
+  the user's further research into Module 4's schematics.
 
-**Target folder structure, given verbatim by the user:**
+## Still pending: merging module-03 + module-04 code
+
+The plan is to eventually combine `mcp-hayabusa/server.py` and
+`mcp-detection-kb/server.py` (the Sigma-rule/ATT&CK coverage MCP server) into
+**one consolidated MCP server** — apparently Module 4's assignment explicitly
+offered the option of building its functionality into Module 3's server
+instead of a separate one, which is the road we're taking. User wants to hold
+off on this until they've dug further into Module 4's schematics.
+
+**Target folder structure for the merged result, given verbatim by the user:**
 
 ```
 mcp-hayabusa/
@@ -60,7 +88,9 @@ the 5 detailed questions were not answered in that message and still need
 resolving before actually executing the merge (don't guess at these from the
 green-light alone):
 
-**Still open — need answers before starting the actual merge:**
+**Still open — need answers before starting the actual code merge** (question
+5 from the original list, final folder location, is now resolved — root
+level, no `src/` — and the naming question is resolved too, both above):
 
 1. **`chainsaw/`** (the second detection engine, `scan_chainsaw` tool + native
    Chainsaw rules) — keep it, or is Chainsaw support being cut from the
@@ -76,33 +106,29 @@ green-light alone):
    target tree shows only `.claude/settings.json`. Keep `.mcp.json` too, or
    repoint `settings.json` itself at the venv path so `.mcp.json` isn't needed?
 4. **`test_server.py`** — keep the manual smoke-test suite, or drop it?
-5. **Final location of the merged folder** — genuinely ambiguous right now.
-   Earlier in the conversation we discussed everything (`sysmon-parser`,
-   `mcp-hayabusa`, detection-kb) eventually living under a root-level `src/`
-   (i.e. `src/mcp-hayabusa/`), matching the original capstone tree
-   (`project/src/CLAUDE.md`, `...`). But the tree given for *this* merge shows
-   `mcp-hayabusa/` with no `src/` prefix, drawn the same way `sysmon-parser/`
-   was drawn when it moved to repo root. Need to confirm: does the merged
-   folder land at `ai-defense-labs/mcp-hayabusa/` (root-level sibling to
-   `sysmon-parser/`), or `ai-defense-labs/src/mcp-hayabusa/`?
 
 **Also not yet done, blocked on the above:**
-- The actual code merge: combine `module-03-mcp/mcp-hayabusa/server.py` and
-  `module-04-mcp-detection-kb/server.py` into one file. Both currently define
+- The actual code merge: combine `mcp-hayabusa/server.py` and
+  `mcp-detection-kb/server.py` into one file. Both currently define
   similarly-named helpers (`RULES_DIR`, `_iter_rules()`, `_parse_rule()`) over
   *different* rule sets — plan (not yet executed) is to namespace them
   distinctly (e.g. `HAYABUSA_RULES_DIR`/`_iter_hayabusa_rules()` vs.
   `KB_RULES_DIR`/`_iter_kb_rules()`) rather than collapsing them into one.
-- Moving module-04's `rules/` + `mappings/technique_coverage.yml` under
-  `hayabusa/rules/`.
-- Deleting `module-04-mcp-detection-kb/` and unwrapping `module-03-mcp/` once
-  the merge lands in its final location.
-- Nothing from this merge phase has been committed — repo is clean at commit
-  `d3cd2eb` as of this handoff.
+- Moving `mcp-detection-kb/rules/` + `mappings/technique_coverage.yml` under
+  `mcp-hayabusa/hayabusa/rules/` (in a distinct subpath, not mixed loose into
+  the ~5,000-rule vendored corpus).
+- Deleting `mcp-detection-kb/` once its content has been folded in.
+- **Also needed:** the `hayabusa` MCP server (a live `.venv/Scripts/python.exe`
+  process) had to be killed to free the directory lock for this flatten — it
+  will need reconnecting (`/mcp`) next session, and it'll need a fresh `.venv`
+  too since the old one was removed earlier this session (see repo's general
+  setup: `python3.14 -m venv .venv && .venv/Scripts/python.exe -m pip install
+  -r requirements.txt`).
 
 ## Resuming
 
-Pick up by getting answers to the 5 open questions above (chainsaw, download
-scripts, `.mcp.json`, `test_server.py`, final folder location), then execute
-the merge: combine the two `server.py`s with distinct rule namespacing, move
-files into place, delete the now-empty source folders, and commit.
+Pick up by getting answers to the 4 remaining open questions above (chainsaw,
+download scripts, `.mcp.json`, `test_server.py`), then execute the merge:
+combine the two `server.py`s with distinct rule namespacing, move
+`mcp-detection-kb`'s rules/mappings under `mcp-hayabusa/hayabusa/rules/`,
+delete `mcp-detection-kb/` once folded in, recreate the venv, and commit.
