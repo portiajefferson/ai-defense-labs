@@ -1,0 +1,37 @@
+# ATT&CK technique -> rule coverage mapping for this knowledge base.
+#
+# This is a curated, at-a-glance index -- the source of truth for which rule
+# detects which technique is still each rule's own `tags:` field in rules/.
+# server.py's detection://rules/by-technique and detection://attack/techniques
+# resources compute coverage dynamically from those tags, not from this file;
+# this file exists for humans scanning the whole coverage picture at once
+# without opening every rule, and as a place to track known gaps (a
+# technique_id with an empty rules list, or one with no entry at all here).
+
+techniques:
+  - technique_id: T1003.001
+    name: LSASS Memory
+    tactic: credential-access
+    rules:
+      - lsass_memory_access
+      - mimikatz_command_line
+
+  - technique_id: T1003.006
+    name: DCSync
+    tactic: credential-access
+    rules:
+      - dcsync
+      - mimikatz_command_line
+
+  - technique_id: T1558.003
+    name: Kerberoasting
+    tactic: credential-access
+    rules:
+      - kerberoasting
+
+  - technique_id: T1550.002
+    name: Pass the Hash
+    tactic: lateral-movement
+    rules:
+      - pass_the_hash
+      - mimikatz_command_line

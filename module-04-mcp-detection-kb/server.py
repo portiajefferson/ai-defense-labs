@@ -9,6 +9,7 @@ from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 
 RULES_DIR = Path(__file__).parent / "rules"
+MAPPINGS_DIR = Path(__file__).parent / "mappings"
 ATTACK_STIX_URL = "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json"
 
 _TITLE_RE = re.compile(r"^title:\s*(.+?)\s*$", re.MULTILINE)
@@ -87,6 +88,40 @@ def _rules_for_technique_tag(tag: str) -> list[dict]:
 def _parent_technique_id(technique_id: str) -> str | None:
     """T1003.001 -> T1003; T1003 -> None."""
     return technique_id.split(".")[0] if "." in technique_id else None
+
+
+def _load_technique_mappings() -> list[dict]:
+    """Parse mappings/technique_coverage.yml's list of technique entries.
+
+    Purpose-built line parser rather than a general YAML parse (no PyYAML dependency,
+    matching Module 3's mcp-hayabusa approach) -- tractable here because this file's
+    shape (a flat `techniques:` list of small mappings) is fixed and small, unlike
+    Sigma rules' more varied structure.
+    """
+    path = MAPPINGS_DIR / "technique_coverage.yml"
+    if not path.is_file():
+        return []
+
+    entries = []
+    current = None
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.split(" #", 1)[0].rstrip()
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("- technique_id:"):
+            if current is not None:
+                entries.append(current)
+            current = {"technique_id": stripped.split(":", 1)[1].strip(), "rules": []}
+        elif current is not None and stripped.startswith("- ") and line.startswith("      "):
+            current["rules"].append(stripped[2:].strip())
+        elif current is not None and ":" in stripped:
+            key, _, value = stripped.partition(":")
+            if key.strip() in ("name", "tactic"):
+                current[key.strip()] = value.strip()
+    if current is not None:
+        entries.append(current)
+    return entries
 
 
 _attack_technique_index_cache: dict | None = None
@@ -188,6 +223,51 @@ def get_technique_coverage(technique_id: str) -> str:
         "detecting_rules": detecting_rules,
         "related_coverage": related_coverage,
     }, indent=2)
+
+
+@mcp.tool()
+def assess_coverage() -> dict:
+    """Cross-check mappings/technique_coverage.yml's tracked ATT&CK techniques against
+    the Sigma rules actually tagged for them in rules/, and report per-technique
+    coverage plus an overall summary.
+
+    This is the aggregate, local-data counterpart to the detection://attack/techniques/{id}
+    resource (which looks up one technique at a time against live MITRE data): it answers
+    "what's our overall coverage look like" and "where are our gaps" using only this
+    knowledge base's own rules + mappings, and flags drift if a technique's tracked
+    `rules:` list in the mapping file no longer matches what's actually tagged in rules/.
+    """
+    mappings = _load_technique_mappings()
+    if not mappings:
+        return {"success": False, "error": f"No technique mappings found in {MAPPINGS_DIR}"}
+
+    techniques = []
+    for entry in mappings:
+        technique_id = entry["technique_id"]
+        expected_rules = set(entry.get("rules", []))
+        actual_rules = {r["rule_name"] for r in _rules_for_technique_tag(f"attack.{technique_id.lower()}")}
+
+        techniques.append({
+            "technique_id": technique_id,
+            "name": entry.get("name"),
+            "tactic": entry.get("tactic"),
+            "coverage": "covered" if actual_rules else "gap",
+            "expected_rules": sorted(expected_rules),
+            "actual_rules": sorted(actual_rules),
+            "in_sync": expected_rules == actual_rules,
+        })
+
+    covered_count = sum(1 for t in techniques if t["coverage"] == "covered")
+    out_of_sync = [t["technique_id"] for t in techniques if not t["in_sync"]]
+
+    return {
+        "success": True,
+        "technique_count": len(techniques),
+        "covered_count": covered_count,
+        "gap_count": len(techniques) - covered_count,
+        "out_of_sync_techniques": out_of_sync,
+        "techniques": techniques,
+    }
 
 
 if __name__ == "__main__":
