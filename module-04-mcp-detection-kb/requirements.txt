@@ -1,0 +1,6 @@
+# MCP Python SDK
+mcp>=1.0.0
+
+# Sigma rules are YAML, but server.py parses them with the standard library
+# (regex over a handful of top-level fields) rather than adding PyYAML --
+# matching Module 3's mcp-hayabusa approach, see its CLAUDE.md.

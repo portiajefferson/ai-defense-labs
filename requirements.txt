@@ -1,0 +1,8 @@
+# Consolidated requirements for the whole ai-defense-labs project.
+# Each module owns its own requirements.txt (so it stays independently
+# installable); this file just aggregates them for a single project-wide
+# venv. Add a `-r` line here whenever a new module gets its own
+# requirements.txt.
+
+-r module-03-mcp/mcp-hayabusa/requirements.txt
+-r module-04-mcp-detection-kb/requirements.txt
