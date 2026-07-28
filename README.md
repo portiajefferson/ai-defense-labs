@@ -1,4 +1,4 @@
-# Module 2 — Security Tool
+# ai-defense-labs
 
 ## sysmon-parser
 
