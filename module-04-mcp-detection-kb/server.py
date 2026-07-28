@@ -120,11 +120,28 @@ def _techniques_for_tactic(tactic_name: str, technique_index: dict) -> list[tupl
     return matches
 
 
+_ATTACK_TACTICS = frozenset({
+    "reconnaissance", "resource-development", "initial-access", "execution",
+    "persistence", "privilege-escalation", "defense-evasion", "credential-access",
+    "discovery", "lateral-movement", "collection", "command-and-control",
+    "exfiltration", "impact",
+})
+
+
 def _technique_tactic(technique: dict) -> str | None:
-    for phase in technique.get("kill_chain_phases", []):
-        if phase.get("kill_chain_name") == "mitre-attack":
-            return phase.get("phase_name")
-    return None
+    """The technique's tactic, preferring a real ATT&CK tactic-matrix phase over
+    non-standard pseudo-tactics some techniques carry (e.g. T1078 lists "stealth"
+    ahead of "persistence" in its kill_chain_phases -- "stealth" isn't one of the
+    14 tactics, just an annotation, and would be a misleading tag on a generated rule)."""
+    phases = [
+        p.get("phase_name")
+        for p in technique.get("kill_chain_phases", [])
+        if p.get("kill_chain_name") == "mitre-attack"
+    ]
+    for phase in phases:
+        if phase in _ATTACK_TACTICS:
+            return phase
+    return phases[0] if phases else None
 
 
 def _assess_technique_coverage(technique_id: str, technique_index: dict) -> dict | None:
