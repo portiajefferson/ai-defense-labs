@@ -1,0 +1,33 @@
+title: Potential Kerberoasting via Anomalous Service Ticket Request
+id: 3ee5e730-e59a-4f8f-a000-4a13387d2b09
+status: test
+description: |
+    Detects a Kerberos service ticket request (TGS) using RC4 encryption
+    (etype 0x17) for a non-machine service account. Kerberoasting requests
+    downgrade to RC4 so the ticket can be cracked offline, since NTLM-derived
+    RC4 keys are far faster to brute-force than AES-derived ones.
+references:
+    - https://attack.mitre.org/techniques/T1558/003/
+    - https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_susp_kerberos_rc4_ticket.yml
+author: Detection Engineering KB (sample rule)
+date: 2026-07-27
+tags:
+    - attack.credential-access
+    - attack.t1558.003
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4769
+        TicketEncryptionType: '0x17'
+        Status: '0x0'
+    filter_machine_accounts:
+        ServiceName|endswith: '$'
+    filter_krbtgt:
+        ServiceName: 'krbtgt'
+    condition: selection and not 1 of filter_*
+falsepositives:
+    - Legacy applications or misconfigured service accounts that still request RC4 tickets
+    - Environments that have not enforced AES for Kerberos service accounts
+level: high

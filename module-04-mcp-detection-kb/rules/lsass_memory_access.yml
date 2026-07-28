@@ -1,0 +1,41 @@
+title: Suspicious Process Access to LSASS Memory
+id: b92607dd-d624-400d-9337-7c05de0d1917
+status: stable
+description: |
+    Detects a process opening a handle to lsass.exe with access rights commonly
+    associated with credential dumping (e.g. via Mimikatz's sekurlsa module,
+    ProcDump, or Task Manager "Create dump file"). LSASS holds cached
+    credentials, Kerberos tickets, and NTLM hashes in memory.
+references:
+    - https://attack.mitre.org/techniques/T1003/001/
+    - https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_access/proc_access_win_lsass_access_susp_source_process.yml
+author: Detection Engineering KB (sample rule)
+date: 2026-07-27
+tags:
+    - attack.credential-access
+    - attack.t1003.001
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection:
+        TargetImage|endswith: '\lsass.exe'
+        GrantedAccess:
+            - '0x1010'
+            - '0x1038'
+            - '0x1410'
+            - '0x1418'
+            - '0x1438'
+            - '0x143a'
+            - '0x1fffff'
+    filter_known_tools:
+        SourceImage|endswith:
+            - '\MsMpEng.exe'
+            - '\WmiPrvSE.exe'
+            - '\svchost.exe'
+            - '\dllhost.exe'
+    condition: selection and not filter_known_tools
+falsepositives:
+    - Endpoint protection or backup agents that legitimately inspect LSASS
+    - Sysadmin tooling that enumerates process handles
+level: high

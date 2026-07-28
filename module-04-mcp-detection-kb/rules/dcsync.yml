@@ -1,0 +1,36 @@
+title: Potential DCSync Attack Against Active Directory
+id: 2adec1a2-5872-4e17-95ff-f2b973bf9fc6
+status: stable
+description: |
+    Detects a directory-replication request (Directory Service Access with the
+    "Replicating Directory Changes" / "Replicating Directory Changes All"
+    extended rights) performed by a security principal that is not a domain
+    controller computer account. Legitimately, only DCs (and accounts
+    explicitly delegated replication rights) call this API; adversaries with
+    Domain Admin-equivalent rights abuse it via tools like Mimikatz's
+    `lsadump::dcsync` to pull password hashes for any account, including
+    krbtgt, without touching LSASS on a DC.
+references:
+    - https://attack.mitre.org/techniques/T1003/006/
+    - https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/win_security_dcsync.yml
+author: Detection Engineering KB (sample rule)
+date: 2026-07-27
+tags:
+    - attack.credential-access
+    - attack.t1003.006
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4662
+        Properties|contains:
+            - '1131f6aa-9c07-11d1-f79f-00c04fc2dcd2'  # Replicating Directory Changes
+            - '1131f6ad-9c07-11d1-f79f-00c04fc2dcd2'  # Replicating Directory Changes All
+    filter_domain_controllers:
+        SubjectUserName|endswith: '$'
+    condition: selection and not filter_domain_controllers
+falsepositives:
+    - Legitimate Azure AD Connect / directory-sync service accounts delegated replication rights
+    - Backup or identity-management tooling granted replication permissions
+level: critical
