@@ -4,6 +4,8 @@
 import json
 import re
 import urllib.request
+import uuid
+from datetime import date
 from pathlib import Path
 
 from mcp.server.fastmcp import FastMCP
@@ -88,6 +90,78 @@ def _rules_for_technique_tag(tag: str) -> list[dict]:
 def _parent_technique_id(technique_id: str) -> str | None:
     """T1003.001 -> T1003; T1003 -> None."""
     return technique_id.split(".")[0] if "." in technique_id else None
+
+
+_TECHNIQUE_ID_RE = re.compile(r"^T\d{4}(\.\d{3})?$", re.IGNORECASE)
+
+
+def _is_technique_id(identifier: str) -> bool:
+    return bool(_TECHNIQUE_ID_RE.match(identifier.strip()))
+
+
+def _normalize_tactic_name(name: str) -> str:
+    """"Credential Access" / "credential_access" -> "credential-access", matching
+    ATT&CK STIX kill_chain_phases' phase_name convention."""
+    return re.sub(r"[\s_]+", "-", name.strip().lower())
+
+
+def _slugify(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_") or "rule"
+
+
+def _techniques_for_tactic(tactic_name: str, technique_index: dict) -> list[tuple[str, dict]]:
+    """All (technique_id, technique_obj) pairs whose kill_chain_phases include this tactic."""
+    matches = []
+    for tid, obj in technique_index.items():
+        for phase in obj.get("kill_chain_phases", []):
+            if phase.get("kill_chain_name") == "mitre-attack" and phase.get("phase_name") == tactic_name:
+                matches.append((tid, obj))
+                break
+    return matches
+
+
+def _technique_tactic(technique: dict) -> str | None:
+    for phase in technique.get("kill_chain_phases", []):
+        if phase.get("kill_chain_name") == "mitre-attack":
+            return phase.get("phase_name")
+    return None
+
+
+def _assess_technique_coverage(technique_id: str, technique_index: dict) -> dict | None:
+    """Shared coverage-assessment logic for one technique ID, used by both the
+    detection://attack/techniques/{id} resource and the analyze_coverage/suggest_rule
+    tools, so the covered/partial/gap rules stay in exactly one place."""
+    technique = technique_index.get(technique_id)
+    if technique is None:
+        return None
+
+    detecting_rules = _rules_for_technique_tag(f"attack.{technique_id.lower()}")
+
+    related_coverage = None
+    if detecting_rules:
+        coverage = "covered"
+    else:
+        parent_id = _parent_technique_id(technique_id)
+        if parent_id:
+            related_via, related_rules = parent_id, _rules_for_technique_tag(f"attack.{parent_id.lower()}")
+        else:
+            child_prefix = f"attack.{technique_id.lower()}."
+            related_via = f"{technique_id}.*"
+            related_rules = [r for r in _iter_rules() if any(t.lower().startswith(child_prefix) for t in r["tags"])]
+
+        coverage = "partial" if related_rules else "gap"
+        if related_rules:
+            related_coverage = {"via": related_via, "rules": related_rules}
+
+    return {
+        "technique_id": technique_id,
+        "name": technique.get("name"),
+        "description": technique.get("description"),
+        "is_subtechnique": technique.get("x_mitre_is_subtechnique", False),
+        "coverage": coverage,
+        "detecting_rules": detecting_rules,
+        "related_coverage": related_coverage,
+    }
 
 
 def _load_technique_mappings() -> list[dict]:
@@ -192,37 +266,295 @@ def get_technique_coverage(technique_id: str) -> str:
     except OSError as e:
         return json.dumps({"error": f"Failed to fetch ATT&CK data: {e}"}, indent=2)
 
-    technique = technique_index.get(technique_id)
-    if technique is None:
+    result = _assess_technique_coverage(technique_id, technique_index)
+    if result is None:
         return json.dumps({"error": f"Unknown ATT&CK technique '{technique_id}'"}, indent=2)
+    return json.dumps(result, indent=2)
 
-    detecting_rules = _rules_for_technique_tag(f"attack.{technique_id.lower()}")
 
-    related_coverage = None
-    if detecting_rules:
-        coverage = "covered"
-    else:
-        parent_id = _parent_technique_id(technique_id)
-        if parent_id:
-            related_via, related_rules = parent_id, _rules_for_technique_tag(f"attack.{parent_id.lower()}")
-        else:
-            child_prefix = f"attack.{technique_id.lower()}."
-            related_via = f"{technique_id}.*"
-            related_rules = [r for r in _iter_rules() if any(t.lower().startswith(child_prefix) for t in r["tags"])]
+@mcp.resource("playbook://list")
+def list_playbooks() -> str:
+    """List available IR playbooks/procedures.
 
-        coverage = "partial" if related_rules else "gap"
-        if related_rules:
-            related_coverage = {"via": related_via, "rules": related_rules}
-
+    Stub: no playbook data source exists yet in this repo. Returns an empty list with a
+    `status` flag rather than an error, so a caller can distinguish "no playbooks configured"
+    from a broken resource.
+    """
     return json.dumps({
-        "technique_id": technique_id,
-        "name": technique.get("name"),
-        "description": technique.get("description"),
-        "is_subtechnique": technique.get("x_mitre_is_subtechnique", False),
-        "coverage": coverage,
-        "detecting_rules": detecting_rules,
-        "related_coverage": related_coverage,
+        "status": "not_implemented",
+        "note": "No playbooks/ directory exists yet in this repo.",
+        "playbooks": [],
     }, indent=2)
+
+
+@mcp.resource("intel://list")
+def list_intel() -> str:
+    """List available threat intelligence (actors, IOCs, campaigns).
+
+    Stub: no intel data source exists yet in this repo.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "note": "No threat intel source configured yet in this repo.",
+        "items": [],
+    }, indent=2)
+
+
+@mcp.resource("detection://environment/hosts")
+def list_environment_hosts() -> str:
+    """List known hosts and their roles in the monitored environment.
+
+    Stub: no host inventory data source exists yet in this repo.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "note": "No host inventory data source exists yet in this repo.",
+        "hosts": [],
+    }, indent=2)
+
+
+@mcp.resource("detection://environment/services")
+def list_environment_services() -> str:
+    """List critical services running in the monitored environment.
+
+    Stub: no service inventory data source exists yet in this repo.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "note": "No service inventory data source exists yet in this repo.",
+        "services": [],
+    }, indent=2)
+
+
+@mcp.resource("detection://environment/baselines")
+def list_environment_baselines() -> str:
+    """List normal-behavior baselines for the monitored environment.
+
+    Stub: no baseline data source exists yet in this repo.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "note": "No baseline data source exists yet in this repo.",
+        "baselines": [],
+    }, indent=2)
+
+
+@mcp.resource("detection://investigations")
+def list_investigations() -> str:
+    """List past investigation cases.
+
+    Stub: no investigation-case data source exists yet in this repo.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "note": "No investigation-case data source exists yet in this repo.",
+        "cases": [],
+    }, indent=2)
+
+
+@mcp.resource("detection://investigations/{case_id}")
+def get_investigation(case_id: str) -> str:
+    """Return details for a specific past investigation case, by case ID.
+
+    Stub: no investigation-case data source exists yet in this repo.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "case_id": case_id,
+        "note": "No investigation-case data source exists yet in this repo.",
+    }, indent=2)
+
+
+@mcp.resource("detection://investigations/by-technique/{technique_id}")
+def list_investigations_by_technique(technique_id: str) -> str:
+    """List past investigation cases involving a given ATT&CK technique ID.
+
+    Stub: no investigation-case data source exists yet in this repo.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "technique_id": technique_id,
+        "note": "No investigation-case data source exists yet in this repo.",
+        "cases": [],
+    }, indent=2)
+
+
+@mcp.resource("docs://list")
+def list_docs() -> str:
+    """List available documentation.
+
+    Stub: no docs/ directory exists yet in this repo -- see CLAUDE.md for current
+    project documentation instead.
+    """
+    return json.dumps({
+        "status": "not_implemented",
+        "note": "No docs/ directory exists yet in this repo; see CLAUDE.md.",
+        "docs": [],
+    }, indent=2)
+
+
+@mcp.tool()
+def analyze_coverage(identifier: str) -> dict:
+    """Analyze detection coverage for an ATT&CK technique ID (e.g. "T1003.001") or a
+    tactic name (e.g. "credential-access", "Lateral Movement").
+
+    Looks up the matching technique(s) against the live MITRE ATT&CK data (the same
+    source detection://attack/techniques/{id} uses) and cross-checks each against Sigma
+    rules tagged in rules/, via the same covered/partial/gap logic that resource uses.
+    This is the tool-shaped counterpart to that resource: one call that accepts either a
+    single technique ID or a whole tactic and always returns a report (including a gap
+    list), rather than requiring the caller to already know individual technique IDs.
+    """
+    identifier = identifier.strip()
+    if not identifier:
+        return {"success": False, "error": "identifier must be a non-empty ATT&CK technique ID or tactic name"}
+
+    try:
+        technique_index = _load_attack_technique_index()
+    except OSError as e:
+        return {"success": False, "error": f"Failed to fetch ATT&CK data: {e}"}
+
+    tactic = None
+    if _is_technique_id(identifier):
+        technique_id = identifier.upper()
+        result = _assess_technique_coverage(technique_id, technique_index)
+        if result is None:
+            return {"success": False, "error": f"Unknown ATT&CK technique '{technique_id}'"}
+        techniques = [result]
+    else:
+        tactic = _normalize_tactic_name(identifier)
+        matches = _techniques_for_tactic(tactic, technique_index)
+        if not matches:
+            return {
+                "success": False,
+                "error": f"No ATT&CK techniques found for tactic '{identifier}' (normalized: '{tactic}')",
+            }
+        techniques = [_assess_technique_coverage(tid, technique_index) for tid, _ in sorted(matches)]
+
+    covered = [t for t in techniques if t["coverage"] == "covered"]
+    partial = [t for t in techniques if t["coverage"] == "partial"]
+    gap = [t for t in techniques if t["coverage"] == "gap"]
+
+    return {
+        "success": True,
+        "query": identifier,
+        "tactic": tactic,
+        "technique_count": len(techniques),
+        "covered_count": len(covered),
+        "partial_count": len(partial),
+        "gap_count": len(gap),
+        "gap_technique_ids": [t["technique_id"] for t in gap],
+        "techniques": techniques,
+    }
+
+
+def _render_rule_template(technique_id: str, technique: dict) -> str:
+    """A placeholder Sigma rule for a coverage gap, matching this repo's existing rule
+    style (see rules/kerberoasting.yml) -- deliberately incomplete (empty selection,
+    status: experimental) since it's a starting point for a human to fill in, not a
+    working rule."""
+    tactic = _technique_tactic(technique)
+    tags = [f"attack.{tactic}"] if tactic else []
+    tags.append(f"attack.{technique_id.lower()}")
+    tags_block = "\n".join(f"    - {t}" for t in tags)
+    technique_path = technique_id.replace(".", "/")
+
+    return f"""title: {technique.get("name") or technique_id} (suggested template)
+id: {uuid.uuid4()}
+status: experimental
+description: |
+    TODO: fill in a real detection. Generated by suggest_rule as a starting point for
+    covering {technique_id} ({technique.get("name")}), which had no tagged rule yet.
+references:
+    - https://attack.mitre.org/techniques/{technique_path}/
+author: Detection Engineering KB (generated template)
+date: {date.today().isoformat()}
+tags:
+{tags_block}
+logsource:
+    product: windows
+    # TODO: set service/category (e.g. security, sysmon)
+detection:
+    selection:
+        # TODO: fill in real selection fields
+    condition: selection
+falsepositives:
+    - Unknown -- rule not yet validated
+level: medium
+"""
+
+
+@mcp.tool()
+def suggest_rule(technique_id: str, create_template: bool = False) -> dict:
+    """Check detection coverage for one ATT&CK technique ID and, if it's a gap, suggest
+    a detection approach (ATT&CK's own data sources/platforms for that technique).
+
+    If create_template is True and the technique is a gap, writes a placeholder Sigma
+    rule YAML into rules/ (named after the technique, tagged attack.<technique_id>,
+    status: experimental) as a starting point -- it will not overwrite an existing file,
+    and does nothing if the technique already has coverage.
+    """
+    technique_id = technique_id.strip().upper()
+    if not _is_technique_id(technique_id):
+        return {
+            "success": False,
+            "error": f"'{technique_id}' doesn't look like an ATT&CK technique ID (expected e.g. 'T1003' or 'T1003.001')",
+        }
+
+    try:
+        technique_index = _load_attack_technique_index()
+    except OSError as e:
+        return {"success": False, "error": f"Failed to fetch ATT&CK data: {e}"}
+
+    result = _assess_technique_coverage(technique_id, technique_index)
+    if result is None:
+        return {"success": False, "error": f"Unknown ATT&CK technique '{technique_id}'"}
+
+    if result["coverage"] == "covered":
+        return {
+            "success": True,
+            "technique_id": technique_id,
+            "coverage": "covered",
+            "message": "Already covered -- no suggestion needed.",
+            "detecting_rules": result["detecting_rules"],
+            "template_created": False,
+        }
+
+    technique = technique_index[technique_id]
+    data_sources = technique.get("x_mitre_data_sources", [])
+    platforms = technique.get("x_mitre_platforms", [])
+
+    response = {
+        "success": True,
+        "technique_id": technique_id,
+        "coverage": result["coverage"],
+        "related_coverage": result["related_coverage"],
+        "suggestion": (
+            f"No rule tags {technique_id} ({technique.get('name')}) directly. "
+            f"Data source(s) ATT&CK associates with this technique: "
+            f"{', '.join(data_sources) if data_sources else 'none listed'}. "
+            f"Platform(s): {', '.join(platforms) if platforms else 'unspecified'}. "
+            f"Consider a Sigma rule against those log source(s), tagged attack.{technique_id.lower()}."
+        ),
+        "data_sources": data_sources,
+        "platforms": platforms,
+        "template_created": False,
+    }
+
+    if create_template:
+        rule_name = _slugify(technique.get("name") or technique_id)
+        path = _resolve_rule_path(rule_name)
+        if path is None:
+            response["template_error"] = "Could not resolve a safe rule file path for this technique."
+        elif path.exists():
+            response["template_error"] = f"rules/{rule_name}.yml already exists -- not overwriting."
+        else:
+            path.write_text(_render_rule_template(technique_id, technique), encoding="utf-8")
+            response["template_created"] = True
+            response["rule_name"] = rule_name
+            response["rule_path"] = str(path.relative_to(Path(__file__).parent))
+
+    return response
 
 
 @mcp.tool()
